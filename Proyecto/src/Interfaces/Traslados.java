@@ -177,7 +177,7 @@ public class Traslados extends javax.swing.JFrame {
         Ubicacion1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         Destino1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        Destino1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "ROTARIA ", "MADRE JUANA", "MERIDA ", "BARINAS", "SANTA BARBARA", "BARQUISIMETO", "ACARIGUA", "CABIMAS" }));
+        Destino1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "ROTARIA ", "MADRE JUANA", "MERIDA ", "BARINAS", "SANTA BARBARA", "BARQUISIMETO", "ACARIGUA", "CABIMAS", "SAN JOSESITO" }));
         Destino1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         Destino1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -220,7 +220,7 @@ public class Traslados extends javax.swing.JFrame {
         jLabel15.setText("         FECHA:        ");
 
         Sucursal.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        Sucursal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "ROTARIA ", "MADRE JUANA", "MERIDA ", "BARINAS", "SANTA BARBARA", "BARQUISIMETO", "ACARIGUA", "CABIMAS" }));
+        Sucursal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "ROTARIA ", "MADRE JUANA", "MERIDA ", "BARINAS", "SANTA BARBARA", "BARQUISIMETO", "ACARIGUA", "CABIMAS", "SAN JOSESITO", " ", " " }));
         Sucursal.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel16.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
