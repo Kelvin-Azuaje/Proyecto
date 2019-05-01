@@ -41,8 +41,9 @@ public class Inventario extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setTitle("INVENTARIO DE EQUIPOS");
+        setResizable(false);
 
         panel1.setColorPrimario(new java.awt.Color(255, 255, 255));
         panel1.setColorSecundario(new java.awt.Color(38, 116, 38));
@@ -61,16 +62,16 @@ public class Inventario extends javax.swing.JFrame {
         panel2.setLayout(panel2Layout);
         panel2Layout.setHorizontalGroup(
             panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel2Layout.createSequentialGroup()
-                .addGap(316, 316, 316)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel2Layout.createSequentialGroup()
+                .addContainerGap(354, Short.MAX_VALUE)
                 .addComponent(jLabel5)
-                .addContainerGap(391, Short.MAX_VALUE))
+                .addGap(353, 353, 353))
         );
         panel2Layout.setVerticalGroup(
             panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel2Layout.createSequentialGroup()
                 .addComponent(jLabel5)
-                .addGap(1, 1, 1))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         jLabel7.setFont(new java.awt.Font("Bookman Old Style", 3, 40)); // NOI18N

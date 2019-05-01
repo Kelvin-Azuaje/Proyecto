@@ -157,7 +157,6 @@ public class Registro extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setText("       CODIGO:");
-        jLabel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         txt_Codigo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         try {
@@ -179,11 +178,9 @@ public class Registro extends javax.swing.JFrame {
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel9.setText("          TIPO:   ");
-        jLabel9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel10.setText("      DESTINO: ");
-        jLabel10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         txt_Destino.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         txt_Destino.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "LINEA DE CAJA", "PREVENCION Y CONTROL", "SUPERVISORES", "SUBGERENTES", "CAJA PRINCIPAL", "LIQUIDACION", "DIGITALIZACION", "TALENTO HUMANO", "MERCADEO", "HABLADORES", "FRUVER", "CHARCUTERIA", "PESCADERIA", "CARNICERIA", "PANADERIA", "ATENCION AL CLIENTE", "MANTENIMIENTO INDUSTRIAL", "PERECEDEROS", "NO PERECEDEROS", "CHASS", "SERVICIO MEDICO", "CCTV", "PUERTA PERSONAL" }));
@@ -191,7 +188,6 @@ public class Registro extends javax.swing.JFrame {
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel11.setText(" DESCRIPCION: ");
-        jLabel11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         txt_Descripcion.setColumns(20);
         txt_Descripcion.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -287,7 +283,7 @@ public class Registro extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel1))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
-                        .addContainerGap(13, Short.MAX_VALUE)
+                        .addContainerGap(15, Short.MAX_VALUE)
                         .addComponent(Panel_Datos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)

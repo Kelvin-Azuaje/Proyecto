@@ -90,7 +90,7 @@ public class Mantenimiento extends javax.swing.JFrame {
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fondos/unnamed.jpg"))); // NOI18N
 
-        jLabel7.setFont(new java.awt.Font("Bookman Old Style", 3, 40)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Bookman Old Style", 3, 41)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(47, 131, 47));
         jLabel7.setText("MANTENIMIENTO ");
 
@@ -100,7 +100,7 @@ public class Mantenimiento extends javax.swing.JFrame {
             panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(panel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(panel1Layout.createSequentialGroup()
-                .addGap(0, 99, Short.MAX_VALUE)
+                .addGap(0, 84, Short.MAX_VALUE)
                 .addComponent(jLabel7)
                 .addGap(73, 73, 73)
                 .addComponent(jLabel6))

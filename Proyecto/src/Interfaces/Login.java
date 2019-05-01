@@ -5,6 +5,14 @@
  */
 package Interfaces;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author AZUAJE
@@ -22,10 +30,43 @@ public class Login extends javax.swing.JFrame {
     }
 
      
-    public void Ingresar(){
-        Principal obj = new Principal();
-        obj.setVisible(true);
-        dispose();
+    /*
+    @funcion acceder 
+    funcion creada para leer los datos de la BD de una tabla especifica 
+    posee un condicional try, catch utilizado cuando se establece la conexion con la base de datos
+    */
+    void acceder(String Usuario, String Clave){
+        String captura="";
+        String sql="SELECT * FROM empleados WHERE NOM_USUARIO='"+Usuario+"' && CLAVE='"+Clave+"'";
+        try {
+            Statement st= cc.createStatement();
+            ResultSet rs= st.executeQuery(sql);
+            while(rs.next()){
+                captura = rs.getString("CARGO");
+            }
+            if(captura.equals("Soportista_Junior")){
+                Principal obj= new Principal();
+                obj.setVisible(true);
+                dispose();
+            }if(captura.equals("Soportista_Senior")){
+                Principal obj= new Principal();
+                obj.setVisible(true);
+                dispose();
+            }if(captura.equals("Soportista_Master")){
+                Principal obj= new Principal();
+                obj.setVisible(true);
+                dispose();
+            }if(captura.equals("Analista_Sistema")){
+                Principal obj= new Principal();
+                obj.setVisible(true);
+                dispose();
+            }else{
+                JOptionPane.showMessageDialog(this, "El usuario y/o la contraseña son incorrectos");
+            }
+            //estos condicionales establecen a que ventana sera redirigido de acuerdo a su cargo
+        } catch (SQLException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -35,13 +76,13 @@ public class Login extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         txt_Usuario = new javax.swing.JTextField();
         txt_Contraseña = new javax.swing.JPasswordField();
-        jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
+        setTitle("LOGIN");
+        setResizable(false);
 
         panel1.setColorPrimario(new java.awt.Color(255, 255, 255));
         panel1.setColorSecundario(new java.awt.Color(38, 116, 38));
@@ -58,11 +99,6 @@ public class Login extends javax.swing.JFrame {
 
         txt_Contraseña.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         txt_Contraseña.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 0), 2));
-
-        jLabel2.setBackground(new java.awt.Color(0, 102, 0));
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("¿Olvido su Contraseña?");
 
         jButton1.setBackground(new java.awt.Color(0, 102, 0));
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -92,13 +128,8 @@ public class Login extends javax.swing.JFrame {
             panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(137, 137, 137))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(120, 120, 120))))
+                .addComponent(jLabel3)
+                .addGap(137, 137, 137))
             .addGroup(panel1Layout.createSequentialGroup()
                 .addGap(68, 68, 68)
                 .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -123,13 +154,11 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(txt_Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(txt_Contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
-                .addGap(48, 48, 48))
+                .addGap(42, 42, 42))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -157,9 +186,11 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        Principal obj= new Principal();
-        obj.setVisible(true);
-        dispose();
+            
+        String usuario= txt_Usuario.getText();
+        String clave= new String(txt_Contraseña.getText());
+
+        acceder(usuario, clave);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -201,10 +232,13 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private org.edisoncor.gui.panel.Panel panel1;
     private javax.swing.JPasswordField txt_Contraseña;
     private javax.swing.JTextField txt_Usuario;
     // End of variables declaration//GEN-END:variables
+
+    Conexion cn= new Conexion();
+    Connection cc= cn.enlazar();
+    
 }

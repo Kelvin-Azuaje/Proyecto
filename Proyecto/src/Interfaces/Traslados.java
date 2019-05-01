@@ -170,12 +170,15 @@ public class Traslados extends javax.swing.JFrame {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fondos/unnamed.jpg"))); // NOI18N
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(47, 131, 47), 3), "EXTERNOS", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 20), new java.awt.Color(47, 131, 47))); // NOI18N
 
+        Ubicacion1.setBackground(null);
         Ubicacion1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         Ubicacion1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "SISTEMAS & TI", "TALENTO HUMANO", "CHASS", "LINEA DE CAJA", "CAJA PRINCIPAL", "COMPRA DE PERECEDEROS", "COMPRA NO PERECEDEROS", "LIQUIDACIÓN", "DIGITALIZACIÓN", "SUPERVISORES", "SUB-GERENTES", "RECEPTOR DE PERECEDEROS", "RECEPTOR NO PERECEDEROS", "PREVENCION Y CONTROL", "CCTV", "HABLADORES", "ENFERMERIA", "CHARCUTERIA", "ATENCIÓN AL CLIENTE" }));
         Ubicacion1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        Destino1.setBackground(null);
         Destino1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         Destino1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "ROTARIA ", "MADRE JUANA", "MERIDA ", "BARINAS", "SANTA BARBARA", "BARQUISIMETO", "ACARIGUA", "CABIMAS", "SAN JOSESITO" }));
         Destino1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -186,6 +189,7 @@ public class Traslados extends javax.swing.JFrame {
         });
 
         Fecha1_1.setEditable(false);
+        Fecha1_1.setBackground(null);
         Fecha1_1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         try {
             Fecha1_1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("  ## /  ##  /  ####")));
@@ -219,6 +223,7 @@ public class Traslados extends javax.swing.JFrame {
         jLabel15.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel15.setText("         FECHA:        ");
 
+        Sucursal.setBackground(null);
         Sucursal.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         Sucursal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "ROTARIA ", "MADRE JUANA", "MERIDA ", "BARINAS", "SANTA BARBARA", "BARQUISIMETO", "ACARIGUA", "CABIMAS", "SAN JOSESITO", " ", " " }));
         Sucursal.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -241,6 +246,7 @@ public class Traslados extends javax.swing.JFrame {
         jLabel18.setText("CODIGO DEL EQUIPO:");
 
         Equipo1.setEditable(false);
+        Equipo1.setBackground(null);
         Equipo1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         Equipo1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -374,9 +380,11 @@ public class Traslados extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(47, 131, 47));
         jLabel7.setText("TRASLADOS ");
 
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(47, 131, 47), 3), "INTERNOS", javax.swing.border.TitledBorder.RIGHT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 20), new java.awt.Color(47, 131, 47))); // NOI18N
         jPanel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
+        Ubicacion2.setBackground(null);
         Ubicacion2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         Ubicacion2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "SISTEMAS & TI", "TALENTO HUMANO", "CHASS", "LINEA DE CAJA", "CAJA PRINCIPAL", "COMPRA DE PERECEDEROS", "COMPRA NO PERECEDEROS", "LIQUIDACIÓN", "DIGITALIZACIÓN", "SUPERVISORES", "SUB-GERENTES", "RECEPTOR DE PERECEDEROS", "RECEPTOR NO PERECEDEROS", "PREVENCION Y CONTROL", "CCTV", "HABLADORES", "ENFERMERIA", "CHARCUTERIA", "ATENCIÓN AL CLIENTE" }));
         Ubicacion2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -386,6 +394,7 @@ public class Traslados extends javax.swing.JFrame {
             }
         });
 
+        Destino2.setBackground(null);
         Destino2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         Destino2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "SISTEMAS & TI", "TALENTO HUMANO", "CHASS", "LINEA DE CAJA", "CAJA PRINCIPAL", "COMPRA DE PERECEDEROS", "COMPRA NO PERECEDEROS", "LIQUIDACIÓN", "DIGITALIZACIÓN", "SUPERVISORES", "SUB-GERENTES", "RECEPTOR DE PERECEDEROS", "RECEPTOR NO PERECEDEROS", "PREVENCION Y CONTROL", "CCTV", "HABLADORES", "ENFERMERIA", "CHARCUTERIA", "ATENCIÓN AL CLIENTE" }));
         Destino2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -441,6 +450,7 @@ public class Traslados extends javax.swing.JFrame {
         jLabel22.setText("         EQUIPO:");
 
         Equipo2.setEditable(false);
+        Equipo2.setBackground(null);
         Equipo2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         Equipo2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -448,6 +458,7 @@ public class Traslados extends javax.swing.JFrame {
         jLabel23.setText("ULTIMO TRASLADO:");
 
         Fecha1_2.setEditable(false);
+        Fecha1_2.setBackground(null);
         Fecha1_2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         try {
             Fecha1_2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("  ## /  ##  /  ####")));
