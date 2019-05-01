@@ -5,7 +5,7 @@
  */
 package Interfaces;
 
-import java.sql.Connection;
+import java.sql.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -37,7 +37,7 @@ public class Login extends javax.swing.JFrame {
     */
     void acceder(String Usuario, String Clave){
         String captura="";
-        String sql="SELECT * FROM empleados WHERE NOM_USUARIO='"+Usuario+"' && CLAVE='"+Clave+"'";
+        String sql="SELECT * FROM usuarios WHERE NOM_USUARIO='"+Usuario+"' && CLAVE='"+Clave+"'";
         try {
             Statement st= cc.createStatement();
             ResultSet rs= st.executeQuery(sql);
@@ -45,21 +45,21 @@ public class Login extends javax.swing.JFrame {
                 captura = rs.getString("CARGO");
             }
             if(captura.equals("Soportista_Junior")){
-                Principal obj= new Principal();
-                obj.setVisible(true);
-                dispose();
-            }if(captura.equals("Soportista_Senior")){
-                Principal obj= new Principal();
-                obj.setVisible(true);
-                dispose();
-            }if(captura.equals("Soportista_Master")){
-                Principal obj= new Principal();
-                obj.setVisible(true);
-                dispose();
-            }if(captura.equals("Analista_Sistema")){
-                Principal obj= new Principal();
-                obj.setVisible(true);
-                dispose();
+                    Principal obj= new Principal();
+                    obj.setVisible(true);
+                    dispose();
+            }else if(captura.equals("Soportista_Senior")){
+                    Principal obj= new Principal();
+                    obj.setVisible(true);
+                    dispose();
+            }else if(captura.equals("Soportista_Master")){
+                    Principal obj= new Principal();
+                    obj.setVisible(true);
+                    dispose();
+            }else if(captura.equals("Analista_Sistema")){
+                    Principal obj= new Principal();
+                    obj.setVisible(true);
+                    dispose();
             }else{
                 JOptionPane.showMessageDialog(this, "El usuario y/o la contraseña son incorrectos");
             }
