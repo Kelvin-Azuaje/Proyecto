@@ -36,7 +36,7 @@ public class Inventario extends javax.swing.JFrame {
         DefaultTableModel modelo1=  new DefaultTableModel(); //se crea un nuevo modelo para la tabla, cambiando el predeterminado
         modelo1.addColumn("CODIGO");
         modelo1.addColumn("TIPO");
-        modelo1.addColumn("DESCRIPCION");
+        modelo1.addColumn("DESCRIPCIÓN");
         modelo1.addColumn("DESTINO");// agrega una columna en la tabla con el no,bre que esta dentro de las comillas
         tabla_Equipos.setModel(modelo1);
         String []datos= new String[4]; //se indican cuantas columnas se mostraran
@@ -62,9 +62,9 @@ public class Inventario extends javax.swing.JFrame {
         DefaultTableModel modelo2=  new DefaultTableModel(); //se crea un nuevo modelo para la tabla, cambiando el predeterminado
         modelo2.addColumn("CODIGO");
         modelo2.addColumn("EQUIPO");
-        modelo2.addColumn("ULTIMA FECHA");
+        modelo2.addColumn("ULTIMA AVERÍA");
         modelo2.addColumn("OBSERVACIONES");
-        modelo2.addColumn("UBICACION");
+        modelo2.addColumn("UBICACIÓN");
         modelo2.addColumn("FECHA ENTRADA");// agrega una columna en la tabla con el no,bre que esta dentro de las comillas
         tabla_Averiados.setModel(modelo2);
         String []datos= new String[6]; //se indican cuantas columnas se mostraran
@@ -91,11 +91,14 @@ public class Inventario extends javax.swing.JFrame {
     public void Mostrar_Traslados_Exter(){
         DefaultTableModel modelo3=  new DefaultTableModel(); //se crea un nuevo modelo para la tabla, cambiando el predeterminado
         modelo3.addColumn("CODIGO");
-        modelo3.addColumn("TIPO");
-        modelo3.addColumn("DESCRIPCION");
-        modelo3.addColumn("DESTINO");// agrega una columna en la tabla con el no,bre que esta dentro de las comillas
+        modelo3.addColumn("EQUIPO");
+        modelo3.addColumn("ULTIMO TRASLADO");
+        modelo3.addColumn("UBICACIÓN");
+        modelo3.addColumn("SUCURSAL");
+        modelo3.addColumn("DESTINO");
+        modelo3.addColumn("FECHA");// agrega una columna en la tabla con el no,bre que esta dentro de las comillas
         tabla_Averiados.setModel(modelo3);
-        String []datos= new String[4]; //se indican cuantas columnas se mostraran
+        String []datos= new String[7]; //se indican cuantas columnas se mostraran
         try {
             Statement st= ct.createStatement();
             ResultSet rs= st.executeQuery("SELECT * FROM tras_externos"); // se indica de que tabla se tomaran los datos para mostrar
@@ -104,6 +107,9 @@ public class Inventario extends javax.swing.JFrame {
                 datos[1]= rs.getString(2);
                 datos[2]= rs.getString(3);
                 datos[3]= rs.getString(4);
+                datos[4]= rs.getString(5);
+                datos[5]= rs.getString(6);
+                datos[6]= rs.getString(7);
                 //indica la posicion de la creacion de la columna y de cual fila de la tabla de la base de datos se tomara la informacion
                 modelo3.addRow(datos); // agrega en la tabla las columnas solicitadas
             }
@@ -115,13 +121,15 @@ public class Inventario extends javax.swing.JFrame {
     }
     
     public void Mostrar_Traslados_Inter(){
-        DefaultTableModel modelo3=  new DefaultTableModel(); //se crea un nuevo modelo para la tabla, cambiando el predeterminado
-        modelo3.addColumn("CODIGO");
-        modelo3.addColumn("TIPO");
-        modelo3.addColumn("DESCRIPCION");
-        modelo3.addColumn("DESTINO");// agrega una columna en la tabla con el no,bre que esta dentro de las comillas
-        tabla_Averiados.setModel(modelo3);
-        String []datos= new String[4]; //se indican cuantas columnas se mostraran
+        DefaultTableModel modelo4=  new DefaultTableModel(); //se crea un nuevo modelo para la tabla, cambiando el predeterminado
+        modelo4.addColumn("CODIGO");
+        modelo4.addColumn("EQUIPO");
+        modelo4.addColumn("ULTIMO TRASLADO");
+        modelo4.addColumn("UBICACIÓN");
+        modelo4.addColumn("DESTINO");
+        modelo4.addColumn("FECHA");// agrega una columna en la tabla con el no,bre que esta dentro de las comillas
+        tabla_Averiados.setModel(modelo4);
+        String []datos= new String[6]; //se indican cuantas columnas se mostraran
         try {
             Statement st= ct.createStatement();
             ResultSet rs= st.executeQuery("SELECT * FROM tras_internos"); // se indica de que tabla se tomaran los datos para mostrar
@@ -130,10 +138,12 @@ public class Inventario extends javax.swing.JFrame {
                 datos[1]= rs.getString(2);
                 datos[2]= rs.getString(3);
                 datos[3]= rs.getString(4);
+                datos[4]= rs.getString(5);
+                datos[5]= rs.getString(6);
                 //indica la posicion de la creacion de la columna y de cual fila de la tabla de la base de datos se tomara la informacion
-                modelo3.addRow(datos); // agrega en la tabla las columnas solicitadas
+                modelo4.addRow(datos); // agrega en la tabla las columnas solicitadas
             }
-            tabla_Equipos.setModel(modelo3);
+            tabla_Equipos.setModel(modelo4);
         } catch (SQLException ex) {
             Logger.getLogger(Inventario.class.getName()).log(Level.SEVERE, null, ex);
             //condicion de excepcion en caso de que exista un error de conexion con la BD
@@ -287,7 +297,8 @@ public class Inventario extends javax.swing.JFrame {
                 .addGap(0, 11, Short.MAX_VALUE))
         );
 
-        tabla_Equipos.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        tabla_Equipos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        tabla_Equipos.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         tabla_Equipos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -299,9 +310,12 @@ public class Inventario extends javax.swing.JFrame {
 
             }
         ));
+        tabla_Equipos.setGridColor(new java.awt.Color(0, 102, 0));
+        tabla_Equipos.setSelectionBackground(new java.awt.Color(51, 153, 0));
         jScrollPane1.setViewportView(tabla_Equipos);
 
-        tabla_Averiados.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        tabla_Averiados.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        tabla_Averiados.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         tabla_Averiados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -313,9 +327,12 @@ public class Inventario extends javax.swing.JFrame {
 
             }
         ));
+        tabla_Averiados.setGridColor(new java.awt.Color(0, 102, 0));
+        tabla_Averiados.setSelectionBackground(new java.awt.Color(51, 153, 0));
         jScrollPane2.setViewportView(tabla_Averiados);
 
-        tabla_Traslados_Exter.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        tabla_Traslados_Exter.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        tabla_Traslados_Exter.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         tabla_Traslados_Exter.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -327,9 +344,12 @@ public class Inventario extends javax.swing.JFrame {
 
             }
         ));
+        tabla_Traslados_Exter.setGridColor(new java.awt.Color(0, 102, 0));
+        tabla_Traslados_Exter.setSelectionBackground(new java.awt.Color(51, 153, 0));
         jScrollPane3.setViewportView(tabla_Traslados_Exter);
 
-        tabla_Traslados_Exter1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        tabla_Traslados_Exter1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        tabla_Traslados_Exter1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         tabla_Traslados_Exter1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -341,6 +361,8 @@ public class Inventario extends javax.swing.JFrame {
 
             }
         ));
+        tabla_Traslados_Exter1.setGridColor(new java.awt.Color(0, 102, 0));
+        tabla_Traslados_Exter1.setSelectionBackground(new java.awt.Color(51, 153, 0));
         jScrollPane4.setViewportView(tabla_Traslados_Exter1);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -380,14 +402,14 @@ public class Inventario extends javax.swing.JFrame {
         panel2.setLayout(panel2Layout);
         panel2Layout.setHorizontalGroup(
             panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(panel2Layout.createSequentialGroup()
+                .addGap(360, 360, 360)
                 .addComponent(jLabel5)
-                .addGap(353, 353, 353))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panel2Layout.setVerticalGroup(
             panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel2Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel2Layout.createSequentialGroup()
                 .addComponent(jLabel5)
                 .addGap(0, 0, Short.MAX_VALUE))
         );

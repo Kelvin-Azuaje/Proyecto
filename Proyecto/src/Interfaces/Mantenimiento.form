@@ -523,8 +523,8 @@
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="Fecha2_2" max="32767" attributes="0"/>
-                                          <Component id="jTextField1" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="Fecha2_S" max="32767" attributes="0"/>
+                                          <Component id="UbicacionS" alignment="0" max="32767" attributes="0"/>
                                           <Component id="Fecha1_S" alignment="0" max="32767" attributes="0"/>
                                           <Component id="EquipoS" alignment="0" max="32767" attributes="0"/>
                                           <Group type="102" alignment="0" attributes="0">
@@ -574,7 +574,7 @@
                       </Group>
                       <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="UbicacionS" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel22" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -589,7 +589,7 @@
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="Fecha2_2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="Fecha2_S" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel23" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="17" max="32767" attributes="0"/>
@@ -746,7 +746,7 @@
                 <Property name="text" type="java.lang.String" value="      FECHA DE SALIDA:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JFormattedTextField" name="Fecha2_2">
+            <Component class="javax.swing.JFormattedTextField" name="Fecha2_S">
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
@@ -788,7 +788,7 @@
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel34MouseClicked"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField1">
+            <Component class="javax.swing.JTextField" name="UbicacionS">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">

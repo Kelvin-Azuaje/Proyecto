@@ -162,7 +162,7 @@ public class Registro extends javax.swing.JFrame {
 
         txt_Codigo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         try {
-            txt_Codigo.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("     7529-150-####")));
+            txt_Codigo.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("   759-150-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }

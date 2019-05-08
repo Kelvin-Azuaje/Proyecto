@@ -17,6 +17,8 @@ public class Mantenimiento extends javax.swing.JFrame {
     public Mantenimiento() {
         initComponents();
         setLocationRelativeTo(null);
+        Deshabilitar_Entrada();
+        Deshabilitar_Salida();
     }
 
     public void Limpiar1(){
@@ -28,11 +30,43 @@ public class Mantenimiento extends javax.swing.JFrame {
     }
     
     public void Habilitar_Entrada(){
-        
+        CodigoE.setEnabled(true);
+        Buscar1.setEnabled(true);
+        EquipoE.setEnabled(true);
+        Fecha1_E.setEnabled(true);
+        FallaE.setEnabled(true);
+        UbicacionE.setEnabled(true);
+        Fecha2_E.setEnabled(true);
     }
     
     public void Habilitar_Salida(){
-        
+        CodigoS.setEnabled(true);
+        Buscar2.setEnabled(true);
+        EquipoS.setEnabled(true);
+        Fecha1_S.setEnabled(true);
+        Observaciones.setEnabled(true);
+        UbicacionS.setEnabled(true);
+        Fecha2_S.setEnabled(true);
+    }
+    
+    public void Deshabilitar_Entrada(){
+        CodigoE.setEnabled(false);
+        Buscar1.setEnabled(false);
+        EquipoE.setEnabled(false);
+        Fecha1_E.setEnabled(false);
+        FallaE.setEnabled(false);
+        UbicacionE.setEnabled(false);
+        Fecha2_E.setEnabled(false);
+    }
+    
+    public void Deshabilitar_Salida(){
+        CodigoS.setEnabled(false);
+        Buscar2.setEnabled(false);
+        EquipoS.setEnabled(false);
+        Fecha1_S.setEnabled(false);
+        Observaciones.setEnabled(false);
+        UbicacionS.setEnabled(false);
+        Fecha2_S.setEnabled(false);
     }
     
     @SuppressWarnings("unchecked")
@@ -75,11 +109,11 @@ public class Mantenimiento extends javax.swing.JFrame {
         Observaciones = new javax.swing.JTextArea();
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
-        Fecha2_2 = new javax.swing.JFormattedTextField();
+        Fecha2_S = new javax.swing.JFormattedTextField();
         jLabel32 = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
         jLabel34 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        UbicacionS = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("MANTENIMIENTO");
@@ -351,13 +385,13 @@ public class Mantenimiento extends javax.swing.JFrame {
         jLabel23.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel23.setText("      FECHA DE SALIDA:");
 
-        Fecha2_2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Fecha2_S.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         try {
-            Fecha2_2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("  ## /  ##  /  ####")));
+            Fecha2_S.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("  ## /  ##  /  ####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        Fecha2_2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Fecha2_S.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         jLabel32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes.20x20/Add.png"))); // NOI18N
         jLabel32.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -375,10 +409,10 @@ public class Mantenimiento extends javax.swing.JFrame {
             }
         });
 
-        jTextField1.setEditable(false);
-        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        UbicacionS.setEditable(false);
+        UbicacionS.setBackground(new java.awt.Color(255, 255, 255));
+        UbicacionS.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        UbicacionS.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -398,8 +432,8 @@ public class Mantenimiento extends javax.swing.JFrame {
                                     .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(Fecha2_2)
-                                    .addComponent(jTextField1)
+                                    .addComponent(Fecha2_S)
+                                    .addComponent(UbicacionS)
                                     .addComponent(Fecha1_S)
                                     .addComponent(EquipoS)
                                     .addGroup(jPanel3Layout.createSequentialGroup()
@@ -436,7 +470,7 @@ public class Mantenimiento extends javax.swing.JFrame {
                     .addComponent(Fecha1_S, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(14, 14, 14)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(UbicacionS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel22))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
@@ -447,7 +481,7 @@ public class Mantenimiento extends javax.swing.JFrame {
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Fecha2_2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Fecha2_S, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel23))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -589,10 +623,11 @@ public class Mantenimiento extends javax.swing.JFrame {
     private javax.swing.JTextArea FallaE;
     private javax.swing.JFormattedTextField Fecha1_E;
     private javax.swing.JFormattedTextField Fecha1_S;
-    private javax.swing.JFormattedTextField Fecha2_2;
     private javax.swing.JFormattedTextField Fecha2_E;
+    private javax.swing.JFormattedTextField Fecha2_S;
     private javax.swing.JTextArea Observaciones;
     private javax.swing.JComboBox UbicacionE;
+    private javax.swing.JTextField UbicacionS;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
@@ -618,7 +653,6 @@ public class Mantenimiento extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField1;
     private org.edisoncor.gui.panel.Panel panel1;
     private org.edisoncor.gui.panel.Panel panel2;
     // End of variables declaration//GEN-END:variables
