@@ -109,8 +109,6 @@ public class Traslados extends javax.swing.JFrame {
         jLabel18 = new javax.swing.JLabel();
         Equipo1 = new javax.swing.JTextField();
         Buscar1 = new javax.swing.JLabel();
-        jLabel28 = new javax.swing.JLabel();
-        jLabel32 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
@@ -129,11 +127,9 @@ public class Traslados extends javax.swing.JFrame {
         Equipo2 = new javax.swing.JTextField();
         jLabel23 = new javax.swing.JLabel();
         Fecha1_2 = new javax.swing.JFormattedTextField();
-        jLabel10 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
-        jLabel26 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("TRASLADOS");
@@ -173,12 +169,10 @@ public class Traslados extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(47, 131, 47), 3), "EXTERNOS", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 20), new java.awt.Color(47, 131, 47))); // NOI18N
 
-        Ubicacion1.setBackground(null);
         Ubicacion1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         Ubicacion1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "SISTEMAS & TI", "TALENTO HUMANO", "CHASS", "LINEA DE CAJA", "CAJA PRINCIPAL", "COMPRA DE PERECEDEROS", "COMPRA NO PERECEDEROS", "LIQUIDACIÓN", "DIGITALIZACIÓN", "SUPERVISORES", "SUB-GERENTES", "RECEPTOR DE PERECEDEROS", "RECEPTOR NO PERECEDEROS", "PREVENCION Y CONTROL", "CCTV", "HABLADORES", "ENFERMERIA", "CHARCUTERIA", "ATENCIÓN AL CLIENTE" }));
         Ubicacion1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        Destino1.setBackground(null);
         Destino1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         Destino1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "ROTARIA ", "MADRE JUANA", "MERIDA ", "BARINAS", "SANTA BARBARA", "BARQUISIMETO", "ACARIGUA", "CABIMAS", "SAN JOSESITO" }));
         Destino1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -189,7 +183,6 @@ public class Traslados extends javax.swing.JFrame {
         });
 
         Fecha1_1.setEditable(false);
-        Fecha1_1.setBackground(null);
         Fecha1_1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         try {
             Fecha1_1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("  ## /  ##  /  ####")));
@@ -223,7 +216,6 @@ public class Traslados extends javax.swing.JFrame {
         jLabel15.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel15.setText("         FECHA:        ");
 
-        Sucursal.setBackground(null);
         Sucursal.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         Sucursal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "ROTARIA ", "MADRE JUANA", "MERIDA ", "BARINAS", "SANTA BARBARA", "BARQUISIMETO", "ACARIGUA", "CABIMAS", "SAN JOSESITO", " ", " " }));
         Sucursal.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -233,7 +225,7 @@ public class Traslados extends javax.swing.JFrame {
 
         Codigo1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         try {
-            Codigo1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter(" 759-15#-####")));
+            Codigo1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("   759-150-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -246,7 +238,6 @@ public class Traslados extends javax.swing.JFrame {
         jLabel18.setText("CODIGO DEL EQUIPO:");
 
         Equipo1.setEditable(false);
-        Equipo1.setBackground(null);
         Equipo1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         Equipo1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -258,10 +249,6 @@ public class Traslados extends javax.swing.JFrame {
                 Buscar1MouseClicked(evt);
             }
         });
-
-        jLabel28.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes.20x20/Undo.png"))); // NOI18N
-
-        jLabel32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes.20x20/Redo.png"))); // NOI18N
 
         jLabel30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes.20x20/Floppy.png"))); // NOI18N
 
@@ -322,27 +309,21 @@ public class Traslados extends javax.swing.JFrame {
                             .addComponent(Equipo1, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(84, 84, 84)
-                .addComponent(jLabel28)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(114, 114, 114)
                 .addComponent(jLabel29)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel30)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel31)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel32)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel28)
                     .addComponent(jLabel29)
                     .addComponent(jLabel30)
-                    .addComponent(jLabel31)
-                    .addComponent(jLabel32))
+                    .addComponent(jLabel31))
                 .addGap(22, 22, 22)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -384,7 +365,6 @@ public class Traslados extends javax.swing.JFrame {
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(47, 131, 47), 3), "INTERNOS", javax.swing.border.TitledBorder.RIGHT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 20), new java.awt.Color(47, 131, 47))); // NOI18N
         jPanel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
-        Ubicacion2.setBackground(null);
         Ubicacion2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         Ubicacion2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "SISTEMAS & TI", "TALENTO HUMANO", "CHASS", "LINEA DE CAJA", "CAJA PRINCIPAL", "COMPRA DE PERECEDEROS", "COMPRA NO PERECEDEROS", "LIQUIDACIÓN", "DIGITALIZACIÓN", "SUPERVISORES", "SUB-GERENTES", "RECEPTOR DE PERECEDEROS", "RECEPTOR NO PERECEDEROS", "PREVENCION Y CONTROL", "CCTV", "HABLADORES", "ENFERMERIA", "CHARCUTERIA", "ATENCIÓN AL CLIENTE" }));
         Ubicacion2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -394,7 +374,6 @@ public class Traslados extends javax.swing.JFrame {
             }
         });
 
-        Destino2.setBackground(null);
         Destino2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         Destino2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "SISTEMAS & TI", "TALENTO HUMANO", "CHASS", "LINEA DE CAJA", "CAJA PRINCIPAL", "COMPRA DE PERECEDEROS", "COMPRA NO PERECEDEROS", "LIQUIDACIÓN", "DIGITALIZACIÓN", "SUPERVISORES", "SUB-GERENTES", "RECEPTOR DE PERECEDEROS", "RECEPTOR NO PERECEDEROS", "PREVENCION Y CONTROL", "CCTV", "HABLADORES", "ENFERMERIA", "CHARCUTERIA", "ATENCIÓN AL CLIENTE" }));
         Destino2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -431,7 +410,7 @@ public class Traslados extends javax.swing.JFrame {
 
         Codigo2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         try {
-            Codigo2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter(" 759-15#-####")));
+            Codigo2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("   759-150-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -450,7 +429,6 @@ public class Traslados extends javax.swing.JFrame {
         jLabel22.setText("         EQUIPO:");
 
         Equipo2.setEditable(false);
-        Equipo2.setBackground(null);
         Equipo2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         Equipo2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -458,7 +436,6 @@ public class Traslados extends javax.swing.JFrame {
         jLabel23.setText("ULTIMO TRASLADO:");
 
         Fecha1_2.setEditable(false);
-        Fecha1_2.setBackground(null);
         Fecha1_2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         try {
             Fecha1_2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("  ## /  ##  /  ####")));
@@ -471,8 +448,6 @@ public class Traslados extends javax.swing.JFrame {
                 Fecha1_2ActionPerformed(evt);
             }
         });
-
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes.20x20/Undo.png"))); // NOI18N
 
         jLabel27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes.20x20/Add.png"))); // NOI18N
         jLabel27.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -489,8 +464,6 @@ public class Traslados extends javax.swing.JFrame {
                 jLabel24MouseClicked(evt);
             }
         });
-
-        jLabel26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes.20x20/Redo.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -531,27 +504,21 @@ public class Traslados extends javax.swing.JFrame {
                             .addComponent(Fecha1_2))))
                 .addContainerGap())
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(83, 83, 83)
-                .addComponent(jLabel10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(113, 113, 113)
                 .addComponent(jLabel27)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel25)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel24)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel26)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel10)
                     .addComponent(jLabel27)
                     .addComponent(jLabel25)
-                    .addComponent(jLabel24)
-                    .addComponent(jLabel26))
+                    .addComponent(jLabel24))
                 .addGap(22, 22, 22)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -734,7 +701,6 @@ public class Traslados extends javax.swing.JFrame {
     private javax.swing.JComboBox Sucursal;
     private javax.swing.JComboBox Ubicacion1;
     private javax.swing.JComboBox Ubicacion2;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -749,13 +715,10 @@ public class Traslados extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
-    private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;

@@ -143,7 +143,7 @@ public class Mantenimiento extends javax.swing.JFrame {
         Fecha2_E.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel12.setText("             FALLA:              ");
+        jLabel12.setText("      OBSERVACIONES:");
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel14.setText("ULTIMO MANTENIMIENTO:");
@@ -160,7 +160,7 @@ public class Mantenimiento extends javax.swing.JFrame {
 
         CodigoE.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         try {
-            CodigoE.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter(" 759-15#-####")));
+            CodigoE.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("   759-150-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -295,7 +295,7 @@ public class Mantenimiento extends javax.swing.JFrame {
 
         CodigoS.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         try {
-            CodigoS.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter(" 759-15#-####")));
+            CodigoS.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("   759-150-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }

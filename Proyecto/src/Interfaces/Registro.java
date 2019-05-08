@@ -5,11 +5,23 @@
  */
 package Interfaces;
 
+import java.sql.Connection;
+import java.sql.Statement;
+
 /**
  *
  * @author Linda
  */
 public class Registro extends javax.swing.JFrame {
+  static Connection conexion;
+  static Statement estatuto;
+    /*
+        varibles de conexion y estatuto para conexion con BD
+    */
+    Conexion_BD cn;
+    String Codigo, Tipo, Descripcion, Destino;
+    
+    // variables donde se almacenan los datos capturados del formulario
 
     /**
      * Creates new form Registro
@@ -17,6 +29,8 @@ public class Registro extends javax.swing.JFrame {
     public Registro() {
         initComponents();
         setLocationRelativeTo(null);
+        cn = new Conexion_BD();
+        cn.conectar();
     }
 
     public void Limpiar(){
@@ -27,10 +41,20 @@ public class Registro extends javax.swing.JFrame {
     }
     
     public void Guardar(){
+        Codigo = txt_Codigo.getText();
+        Tipo = txt_Tipo.getSelectedItem().toString();
+        Descripcion = txt_Descripcion.getText();
+        Destino = txt_Destino.getSelectedItem().toString();
+        String valores = "'"+Codigo+"','"+Tipo+"','"+Descripcion+"','"+Destino+"'";
+        cn.guardar("equipos", valores);
+        Limpiar();
+    }
+    
+    public void Crear_Codigo(){
         
     }
     
-    public void Generar_Codigo(){
+    public void Generar_Archivo(){
         
     }
     
@@ -49,10 +73,8 @@ public class Registro extends javax.swing.JFrame {
 
         panel1 = new org.edisoncor.gui.panel.Panel();
         panel2 = new org.edisoncor.gui.panel.Panel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -79,13 +101,6 @@ public class Registro extends javax.swing.JFrame {
         panel2.setColorPrimario(new java.awt.Color(38, 116, 38));
         panel2.setColorSecundario(new java.awt.Color(255, 255, 255));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/48x48/Undo.png"))); // NOI18N
-        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel2MouseClicked(evt);
-            }
-        });
-
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/48x48/Home.png"))); // NOI18N
         jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -97,13 +112,6 @@ public class Registro extends javax.swing.JFrame {
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel3MouseClicked(evt);
-            }
-        });
-
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/48x48/Redo.png"))); // NOI18N
-        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel6MouseClicked(evt);
             }
         });
 
@@ -119,16 +127,12 @@ public class Registro extends javax.swing.JFrame {
         panel2Layout.setHorizontalGroup(
             panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel2Layout.createSequentialGroup()
-                .addGap(257, 257, 257)
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
+                .addGap(323, 323, 323)
                 .addComponent(jLabel8)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel5)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel6)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panel2Layout.setVerticalGroup(
@@ -140,9 +144,7 @@ public class Registro extends javax.swing.JFrame {
                         .addGap(1, 1, 1)
                         .addGroup(panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6)))
-                    .addComponent(jLabel2))
+                            .addComponent(jLabel5))))
                 .addGap(2, 2, 2))
         );
 
@@ -160,7 +162,7 @@ public class Registro extends javax.swing.JFrame {
 
         txt_Codigo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         try {
-            txt_Codigo.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("     7529   -   000   -   ####")));
+            txt_Codigo.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("     7529-150-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -320,10 +322,6 @@ public class Registro extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-        Deshacer();
-    }//GEN-LAST:event_jLabel2MouseClicked
-
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
         Principal obj = new Principal();
         obj.setVisible(true);
@@ -331,7 +329,7 @@ public class Registro extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel5MouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Generar_Codigo();
+        Generar_Archivo();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
@@ -340,11 +338,9 @@ public class Registro extends javax.swing.JFrame {
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
         Guardar();
+        Crear_Codigo();
+        Limpiar();
     }//GEN-LAST:event_jLabel3MouseClicked
-
-    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
-        Rehacer();
-    }//GEN-LAST:event_jLabel6MouseClicked
 
     private void txt_CodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_CodigoActionPerformed
         // TODO add your handling code here:
@@ -391,11 +387,9 @@ public class Registro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
