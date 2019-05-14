@@ -5,18 +5,8 @@
  */
 package Interfaces;
 
-import com.itextpdf.text.BaseColor;
-import com.itextpdf.text.Document;
-import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.Image;
-import com.itextpdf.text.pdf.Barcode128;
-import com.itextpdf.text.pdf.PdfWriter;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.sql.Connection;
 import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -30,7 +20,8 @@ public class Registro extends javax.swing.JFrame {
     */
     Conexion_BD cn;
     String Codigo, Tipo, Descripcion, Destino;
-    
+    Conexion cc= new  Conexion();
+    Connection ct= cc.enlazar();
     // variables donde se almacenan los datos capturados del formulario
 
     /**
@@ -58,32 +49,7 @@ public class Registro extends javax.swing.JFrame {
         String valores = "'"+Codigo+"','"+Tipo+"','"+Descripcion+"','"+Destino+"'";
         cn.guardar("equipos", valores);
         Limpiar();
-    }
-    
-    public void Crear_Codigo(){
-      try {
-          
-          Document doc = new Document();
-          PdfWriter pdf = PdfWriter.getInstance(doc, new FileOutputStream("Codigos de Barras de los Equipos.pdf"));
-          
-          doc.open();
-          Barcode128 code = new Barcode128();
-          code.setCode(txt_Codigo.getText());
-          Image img = code.createImageWithBarcode(pdf.getDirectContent(), BaseColor.BLACK, BaseColor.BLACK);
-          doc.add(img);
-          doc.close();
-          
-      } catch (FileNotFoundException ex) {
-          Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
-      } catch (DocumentException ex) {
-          Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
-      }
-    }
-    
-    public void Generar_Archivo(){
-        
-    }
-    
+    } 
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -143,7 +109,7 @@ public class Registro extends javax.swing.JFrame {
         panel2Layout.setHorizontalGroup(
             panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel2Layout.createSequentialGroup()
-                .addGap(254, 254, 254)
+                .addGap(253, 253, 253)
                 .addComponent(jLabel8)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel5)
@@ -237,7 +203,7 @@ public class Registro extends javax.swing.JFrame {
         Panel_DatosLayout.setVerticalGroup(
             Panel_DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Panel_DatosLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addGap(21, 21, 21)
                 .addGroup(Panel_DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(txt_Codigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -255,7 +221,7 @@ public class Registro extends javax.swing.JFrame {
                 .addGroup(Panel_DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(txt_Destino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(39, 39, 39))
+                .addGap(24, 24, 24))
         );
 
         javax.swing.GroupLayout panel1Layout = new javax.swing.GroupLayout(panel1);
@@ -314,7 +280,6 @@ public class Registro extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel8MouseClicked
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-        Crear_Codigo();
         Guardar();
         Limpiar();
     }//GEN-LAST:event_jLabel3MouseClicked

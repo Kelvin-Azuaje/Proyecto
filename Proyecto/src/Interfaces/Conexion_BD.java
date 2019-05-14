@@ -3,7 +3,7 @@ package Interfaces;
 /*
     Esta es la clase Conexion_BD la cual se encarga de conectarse
     con la base de datos SQL que se creo para el sistema
-    por medio de esta y las funciones creadas esta clase es la encargada de guardar informacion
+    por medio de esta y las funciones creadas esta clase es la encargada de GUARDAR informacion
     se creo el metodo de manera tal que solo sea necesario hacer conexion con
     las demas interfaces y no copiar el metodo en cada una
 */

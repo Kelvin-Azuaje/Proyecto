@@ -5,7 +5,17 @@
  */
 package Interfaces;
 
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Image;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.Barcode128;
+import com.itextpdf.text.pdf.PdfWriter;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -19,8 +29,17 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Inventario extends javax.swing.JFrame {
 
+    // Estas dos variables son para el formato de las tablas a mostrar en patalla
     Statement sent;
     DefaultTableModel model;
+    //***************************************************************************
+    
+    //Estas variables son para crear el PDF con los codigos de barras
+    PreparedStatement state;
+    ResultSet rst;
+    Connection cone;
+    Image img;
+    //**************************************************************************
     
     Conexion cc= new  Conexion();
     Connection ct= cc.enlazar();
@@ -30,6 +49,7 @@ public class Inventario extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         Externos.setEnabled(false);
         Internos.setEnabled(false);
+        txt_PDF.setEnabled(false);
     }
     
     public void Mostrar_Funcionales(){
@@ -150,6 +170,36 @@ public class Inventario extends javax.swing.JFrame {
         }
     }
     
+    public void Generar_Archivo(){
+        try {
+          
+          state = ct.prepareStatement("SELECT * FROM equipos");
+          rst = state.executeQuery();
+          
+          Document doc = new Document();
+          PdfWriter pdf = PdfWriter.getInstance(doc, new FileOutputStream("Codigos de Barras de los Equipos.pdf"));
+          
+          doc.open();
+          Barcode128 code = new Barcode128();
+          
+          while(rst.next()){
+              code.setCode(rst.getString("CODIGO"));
+              img = code.createImageWithBarcode(pdf.getDirectContent(), BaseColor.BLACK, BaseColor.BLACK);
+              doc.add(img);
+              doc.add(new Paragraph("\t"));
+          }
+          
+          doc.close();
+          
+      } catch (FileNotFoundException ex) {
+          Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
+      } catch (DocumentException ex) {
+          Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
+      } catch (SQLException ex) {
+            Logger.getLogger(Inventario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -164,6 +214,7 @@ public class Inventario extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         Externos = new javax.swing.JButton();
         Internos = new javax.swing.JButton();
+        txt_PDF = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla_Equipos = new javax.swing.JTable();
@@ -271,15 +322,27 @@ public class Inventario extends javax.swing.JFrame {
                     .addComponent(Internos)))
         );
 
+        txt_PDF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/32x32/PDF_24287.png"))); // NOI18N
+        txt_PDF.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_PDFMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(58, 58, 58)
-                .addComponent(jButton3)
-                .addGap(65, 65, 65)
-                .addComponent(jButton4)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(58, 58, 58)
+                        .addComponent(jButton3)
+                        .addGap(65, 65, 65)
+                        .addComponent(jButton4))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(101, 101, 101)
+                        .addComponent(txt_PDF)))
                 .addGap(28, 28, 28)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -287,13 +350,15 @@ public class Inventario extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton4)
+                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(5, 5, 5)
+                        .addComponent(txt_PDF))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 11, Short.MAX_VALUE))
         );
 
@@ -474,14 +539,17 @@ public class Inventario extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         Externos.setEnabled(true);
         Internos.setEnabled(true);
+        txt_PDF.setEnabled(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         Mostrar_Funcionales();
+        txt_PDF.setEnabled(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         Mostrar_Averiados();
+        txt_PDF.setEnabled(false);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void ExternosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExternosActionPerformed
@@ -491,6 +559,10 @@ public class Inventario extends javax.swing.JFrame {
     private void InternosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InternosActionPerformed
         Mostrar_Traslados_Inter();
     }//GEN-LAST:event_InternosActionPerformed
+
+    private void txt_PDFMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_PDFMouseClicked
+        Generar_Archivo();
+    }//GEN-LAST:event_txt_PDFMouseClicked
 
     /**
      * @param args the command line arguments
@@ -549,5 +621,6 @@ public class Inventario extends javax.swing.JFrame {
     private javax.swing.JTable tabla_Equipos;
     private javax.swing.JTable tabla_Traslados_Exter;
     private javax.swing.JTable tabla_Traslados_Exter1;
+    private javax.swing.JLabel txt_PDF;
     // End of variables declaration//GEN-END:variables
 }
