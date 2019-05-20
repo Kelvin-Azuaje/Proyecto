@@ -21,6 +21,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -200,6 +201,9 @@ public class Inventario extends javax.swing.JFrame {
         }
     }
     
+    public void Mensaje(){
+        JOptionPane.showMessageDialog(this, "CODIGOS CREADOS CORRECTAMENTE", "EXITO..!", JOptionPane.WARNING_MESSAGE);
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -562,6 +566,7 @@ public class Inventario extends javax.swing.JFrame {
 
     private void txt_PDFMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_PDFMouseClicked
         Generar_Archivo();
+        Mensaje();
     }//GEN-LAST:event_txt_PDFMouseClicked
 
     /**
