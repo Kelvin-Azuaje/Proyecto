@@ -1,32 +1,48 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Interfaces;
+
+import java.sql.Connection;
+import java.sql.Statement;
 
 /**
  *
- * @author Linda
+ * @author AZUAJE
+ * 
  */
 public class Mantenimiento extends javax.swing.JFrame {
-
-    /**
-     * Creates new form Mantenimiento
-     */
+    static Connection conexion;
+    static Statement estatuto;
+    
+    Conexion_BD cn;
+    String Codigo, Equipo, Fecha1, Observa, Ubicacion, Fecha2;
+    Conexion cc= new  Conexion();
+    Connection ct= cc.enlazar();
+    
     public Mantenimiento() {
         initComponents();
         setLocationRelativeTo(null);
         Deshabilitar_Entrada();
         Deshabilitar_Salida();
+        cn = new Conexion_BD();
+        cn.conectar();
     }
 
-    public void Limpiar1(){
-        
+    public void Limpiar_Entrada(){
+        CodigoE.setText("");
+        EquipoE.setText("");
+        Fecha1_E.setText("");
+        UbicacionE.setSelectedIndex(0);
+        FallaE.setText("");
+        Fecha2_E.setText("");
     }
     
-    public void Limpiar2(){
-        
+    public void Limpiar_Salida(){
+        CodigoS.setText("");
+        EquipoS.setText("");
+        UbicacionS.setText("");
+        Fecha2_S.setText("");
+        Observaciones.setText("");
+        Fecha1_S.setText("");
     }
     
     public void Habilitar_Entrada(){
@@ -43,10 +59,10 @@ public class Mantenimiento extends javax.swing.JFrame {
         CodigoS.setEnabled(true);
         Buscar2.setEnabled(true);
         EquipoS.setEnabled(true);
-        Fecha1_S.setEnabled(true);
+        Fecha2_S.setEnabled(true);
         Observaciones.setEnabled(true);
         UbicacionS.setEnabled(true);
-        Fecha2_S.setEnabled(true);
+        Fecha1_S.setEnabled(true);
     }
     
     public void Deshabilitar_Entrada(){
@@ -63,10 +79,34 @@ public class Mantenimiento extends javax.swing.JFrame {
         CodigoS.setEnabled(false);
         Buscar2.setEnabled(false);
         EquipoS.setEnabled(false);
-        Fecha1_S.setEnabled(false);
+        Fecha2_S.setEnabled(false);
         Observaciones.setEnabled(false);
         UbicacionS.setEnabled(false);
-        Fecha2_S.setEnabled(false);
+        Fecha1_S.setEnabled(false);
+    }
+    
+    public void Guardar_Entrada(){
+        Codigo = CodigoE.getText();
+        Equipo = EquipoE.getText();
+        Fecha1 = Fecha1_E.getText();
+        Observa = Observaciones.getText();
+        Ubicacion = UbicacionE.getSelectedItem().toString();
+        Fecha2 = Fecha2_E.getText();
+        String valores = "'"+Codigo+"','"+Equipo+"','"+Fecha1+"','"+Observa+"','"+Ubicacion+"','"+Fecha2+"'";
+        cn.guardar("averiados", valores);
+        Limpiar_Entrada();
+    }
+    
+    public void Guardar_Salida(){
+        Codigo = CodigoS.getText();
+        Equipo = EquipoS.getText();
+        Fecha1 = Fecha1_S.getText();
+        Observa = Observaciones.getText();
+        Ubicacion = UbicacionS.getText();
+        Fecha2 = Fecha2_S.getText();
+        String valores = "'"+Codigo+"','"+Equipo+"','"+Fecha1+"','"+Observa+"','"+Ubicacion+"','"+Fecha2+"'";
+        cn.guardar("averiados", valores);
+        Limpiar_Salida();
     }
     
     @SuppressWarnings("unchecked")
@@ -103,13 +143,13 @@ public class Mantenimiento extends javax.swing.JFrame {
         jLabel20 = new javax.swing.JLabel();
         EquipoS = new javax.swing.JTextField();
         jLabel21 = new javax.swing.JLabel();
-        Fecha1_S = new javax.swing.JFormattedTextField();
+        Fecha2_S = new javax.swing.JFormattedTextField();
         jLabel13 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         Observaciones = new javax.swing.JTextArea();
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
-        Fecha2_S = new javax.swing.JFormattedTextField();
+        Fecha1_S = new javax.swing.JFormattedTextField();
         jLabel32 = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
         jLabel34 = new javax.swing.JLabel();
@@ -221,6 +261,11 @@ public class Mantenimiento extends javax.swing.JFrame {
         });
 
         jLabel30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes.20x20/Floppy.png"))); // NOI18N
+        jLabel30.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel30MouseClicked(evt);
+            }
+        });
 
         jLabel29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes.20x20/Add.png"))); // NOI18N
         jLabel29.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -355,18 +400,18 @@ public class Mantenimiento extends javax.swing.JFrame {
         jLabel21.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel21.setText("    FECHA DE ENTRADA:");
 
-        Fecha1_S.setEditable(false);
-        Fecha1_S.setBackground(new java.awt.Color(255, 255, 255));
-        Fecha1_S.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Fecha2_S.setEditable(false);
+        Fecha2_S.setBackground(new java.awt.Color(255, 255, 255));
+        Fecha2_S.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         try {
-            Fecha1_S.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("  ## /  ##  /  ####")));
+            Fecha2_S.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("  ## /  ##  /  ####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        Fecha1_S.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        Fecha1_S.addActionListener(new java.awt.event.ActionListener() {
+        Fecha2_S.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Fecha2_S.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Fecha1_SActionPerformed(evt);
+                Fecha2_SActionPerformed(evt);
             }
         });
 
@@ -385,13 +430,13 @@ public class Mantenimiento extends javax.swing.JFrame {
         jLabel23.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel23.setText("      FECHA DE SALIDA:");
 
-        Fecha2_S.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Fecha1_S.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         try {
-            Fecha2_S.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("  ## /  ##  /  ####")));
+            Fecha1_S.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("  ## /  ##  /  ####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        Fecha2_S.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Fecha1_S.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         jLabel32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes.20x20/Add.png"))); // NOI18N
         jLabel32.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -401,6 +446,11 @@ public class Mantenimiento extends javax.swing.JFrame {
         });
 
         jLabel33.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes.20x20/Floppy.png"))); // NOI18N
+        jLabel33.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel33MouseClicked(evt);
+            }
+        });
 
         jLabel34.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes.20x20/Refresh.png"))); // NOI18N
         jLabel34.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -432,9 +482,9 @@ public class Mantenimiento extends javax.swing.JFrame {
                                     .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(Fecha2_S)
-                                    .addComponent(UbicacionS)
                                     .addComponent(Fecha1_S)
+                                    .addComponent(UbicacionS)
+                                    .addComponent(Fecha2_S)
                                     .addComponent(EquipoS)
                                     .addGroup(jPanel3Layout.createSequentialGroup()
                                         .addComponent(CodigoS, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -467,7 +517,7 @@ public class Mantenimiento extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel21)
-                    .addComponent(Fecha1_S, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Fecha2_S, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(14, 14, 14)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(UbicacionS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -481,7 +531,7 @@ public class Mantenimiento extends javax.swing.JFrame {
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Fecha2_S, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Fecha1_S, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel23))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -553,7 +603,7 @@ public class Mantenimiento extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel29MouseClicked
 
     private void jLabel31MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel31MouseClicked
-        Limpiar1();
+        Limpiar_Entrada();
     }//GEN-LAST:event_jLabel31MouseClicked
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
@@ -566,17 +616,25 @@ public class Mantenimiento extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_Buscar2MouseClicked
 
-    private void Fecha1_SActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Fecha1_SActionPerformed
+    private void Fecha2_SActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Fecha2_SActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Fecha1_SActionPerformed
+    }//GEN-LAST:event_Fecha2_SActionPerformed
 
     private void jLabel32MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel32MouseClicked
-        // TODO add your handling code here:
+        Habilitar_Salida();
     }//GEN-LAST:event_jLabel32MouseClicked
 
     private void jLabel34MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel34MouseClicked
-        // TODO add your handling code here:
+        Limpiar_Salida();
     }//GEN-LAST:event_jLabel34MouseClicked
+
+    private void jLabel30MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel30MouseClicked
+        Guardar_Entrada();
+    }//GEN-LAST:event_jLabel30MouseClicked
+
+    private void jLabel33MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel33MouseClicked
+        Guardar_Salida();
+    }//GEN-LAST:event_jLabel33MouseClicked
 
     /**
      * @param args the command line arguments

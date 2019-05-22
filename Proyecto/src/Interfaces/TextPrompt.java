@@ -9,7 +9,8 @@ package Interfaces;
 
 /**
  *
- * @author Monkeyelgrande
+ * @author AZUAJE
+ * 
  */
 import java.awt.*;
 import java.awt.event.*;

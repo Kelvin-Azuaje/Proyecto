@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Interfaces;
 
 import java.sql.*;
@@ -16,6 +12,7 @@ import javax.swing.JOptionPane;
 /**
  *
  * @author AZUAJE
+ * 
  */
 public class Login extends javax.swing.JFrame {
 
@@ -35,6 +32,7 @@ public class Login extends javax.swing.JFrame {
     funcion creada para leer los datos de la BD de una tabla especifica 
     posee un condicional try, catch utilizado cuando se establece la conexion con la base de datos
     */
+    
     void acceder(String Usuario, String Clave){
         String captura="";
         String sql="SELECT * FROM usuarios WHERE NOM_USUARIO='"+Usuario+"' && CLAVE='"+Clave+"'";
@@ -72,6 +70,7 @@ public class Login extends javax.swing.JFrame {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

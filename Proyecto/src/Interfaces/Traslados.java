@@ -1,13 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Interfaces;
 
 /**
  *
- * @author Linda
+ * @author AZUAJE
+ * 
  */
 public class Traslados extends javax.swing.JFrame {
 
@@ -63,7 +60,7 @@ public class Traslados extends javax.swing.JFrame {
         Destino2.setEnabled(false);
     }
     
-    public void Limpiar1(){
+    public void Limpiar_Externos(){
         Codigo1.setText("");
         Equipo1.setText("");
         Fecha1_1.setText("");
@@ -74,7 +71,7 @@ public class Traslados extends javax.swing.JFrame {
         Deshabilitar();
     }
     
-    public void Limpiar2(){
+    public void Limpiar_Internos(){
         Codigo2.setText("");
         Buscar2.setText("");
         Equipo2.setText("");
@@ -83,6 +80,14 @@ public class Traslados extends javax.swing.JFrame {
         Ubicacion2.setSelectedIndex(0);
         Destino2.setSelectedIndex(0);
         Deshabilitar2();
+    }
+    
+    public void Guardar_Externos(){
+        
+    }
+    
+    public void Guardar_Internos(){
+        
     }
     
     @SuppressWarnings("unchecked")
@@ -251,6 +256,11 @@ public class Traslados extends javax.swing.JFrame {
         });
 
         jLabel30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes.20x20/Floppy.png"))); // NOI18N
+        jLabel30.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel30MouseClicked(evt);
+            }
+        });
 
         jLabel29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes.20x20/Add.png"))); // NOI18N
         jLabel29.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -457,6 +467,11 @@ public class Traslados extends javax.swing.JFrame {
         });
 
         jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes.20x20/Floppy.png"))); // NOI18N
+        jLabel25.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel25MouseClicked(evt);
+            }
+        });
 
         jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes.20x20/Refresh.png"))); // NOI18N
         jLabel24.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -643,12 +658,20 @@ public class Traslados extends javax.swing.JFrame {
     }//GEN-LAST:event_Destino1ActionPerformed
 
     private void jLabel31MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel31MouseClicked
-        Limpiar1();
+        Limpiar_Externos();
     }//GEN-LAST:event_jLabel31MouseClicked
 
     private void jLabel24MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel24MouseClicked
-        Limpiar2();
+        Limpiar_Internos();
     }//GEN-LAST:event_jLabel24MouseClicked
+
+    private void jLabel30MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel30MouseClicked
+        Guardar_Externos();
+    }//GEN-LAST:event_jLabel30MouseClicked
+
+    private void jLabel25MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel25MouseClicked
+        Guardar_Internos();
+    }//GEN-LAST:event_jLabel25MouseClicked
 
     /**
      * @param args the command line arguments
