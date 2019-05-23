@@ -1,95 +1,118 @@
 
 package Interfaces;
 
+import java.sql.Connection;
+import java.sql.Statement;
+
 /**
  *
  * @author AZUAJE
  * 
  */
 public class Traslados extends javax.swing.JFrame {
-
-    /**
-     * Creates new form Traslados
-     */
+    static Connection conexion;
+    static Statement estatuto;
+    
+    Conexion_BD cn;
+    String Codigo, Equipo, Fecha1, Ubicacion, Sucursales, Destino, Fecha2;
+    Conexion cc= new  Conexion();
+    Connection ct= cc.enlazar();
+    
     public Traslados() {
         initComponents();
         setLocationRelativeTo(null);
         Deshabilitar();
         Deshabilitar2();
+        cn = new Conexion_BD();
+        cn.conectar();
     }
 
     public void Habilitar_Internos(){
-        Codigo2.setEnabled(true);
+        Codigo_Internos.setEnabled(true);
         Buscar2.setEnabled(true);
-        Equipo2.setEnabled(true);
-        Fecha1_2.setEnabled(true);
-        Fecha2_2.setEnabled(true);
-        Ubicacion2.setEnabled(true);
-        Destino2.setEnabled(true);
+        Equipo_Internos.setEnabled(true);
+        Fecha1_Internos.setEnabled(true);
+        Fecha2_Internos.setEnabled(true);
+        Ubicacion_Internos.setEnabled(true);
+        Destino_Internos.setEnabled(true);
     }
     
     public void Habilitar_Externos(){
-        Codigo1.setEnabled(true);
+        Codigo_Externos.setEnabled(true);
         Buscar1.setEnabled(true);
-        Equipo1.setEnabled(true);
-        Fecha1_1.setEnabled(true);
-        Fecha2_1.setEnabled(true);
-        Ubicacion1.setEnabled(true);
+        Equipo_Externos.setEnabled(true);
+        Fecha1_Externos.setEnabled(true);
+        Fecha2_Externos.setEnabled(true);
+        Ubicacion_Externos.setEnabled(true);
         Sucursal.setEnabled(true);
-        Destino1.setEnabled(true);
+        Destino_Externos.setEnabled(true);
     }
     
-    public void Deshabilitar(){
-        Codigo1.setEnabled(false);
-        Buscar1.setEnabled(false);
-        Equipo1.setEnabled(false);
-        Fecha1_1.setEnabled(false);
-        Fecha2_1.setEnabled(false);
-        Ubicacion1.setEnabled(false);
-        Sucursal.setEnabled(false);
-        Destino1.setEnabled(false);
+    public void Guardar_Externos(){
+        Codigo = Codigo_Externos.getText();
+        Equipo = Equipo_Externos.getText();
+        Fecha1 = Fecha1_Externos.getText();
+        Ubicacion = Ubicacion_Externos.getSelectedItem().toString();
+        Sucursales = Sucursal.getSelectedItem().toString();
+        Destino = Destino_Externos.getSelectedItem().toString();
+        Fecha2 = Fecha2_Externos.getText();
+        String valores = "'"+Codigo+"','"+Equipo+"','"+Fecha1+"','"+Ubicacion+"','"+Sucursales+"','"+Destino+"','"+Fecha2+"'";
+        cn.guardar("tras_externos", valores);
     }
     
-    public void Deshabilitar2(){
-        Codigo2.setEnabled(false);
-        Buscar2.setEnabled(false);
-        Equipo2.setEnabled(false);
-        Fecha1_2.setEnabled(false);
-        Fecha2_2.setEnabled(false);
-        Ubicacion2.setEnabled(false);
-        Destino2.setEnabled(false);
+    public void Guardar_Internos(){
+        Codigo = Codigo_Internos.getText();
+        Equipo = Equipo_Internos.getText();
+        Fecha1 = Fecha1_Internos.getText();
+        Ubicacion = Ubicacion_Internos.getSelectedItem().toString();
+        Destino = Destino_Internos.getSelectedItem().toString();
+        Fecha2 = Fecha2_Internos.getText();
+        String valores = "'"+Codigo+"','"+Equipo+"','"+Fecha1+"','"+Ubicacion+"','"+Destino+"','"+Fecha2+"'";
+        cn.guardar("tras_internos", valores);
     }
     
     public void Limpiar_Externos(){
-        Codigo1.setText("");
-        Equipo1.setText("");
-        Fecha1_1.setText("");
-        Fecha2_1.setText("");
-        Ubicacion1.setSelectedIndex(0);
+        Codigo_Externos.setText("");
+        Equipo_Externos.setText("");
+        Fecha1_Externos.setText("");
+        Fecha2_Externos.setText("");
+        Ubicacion_Externos.setSelectedIndex(0);
         Sucursal.setSelectedIndex(0);
-        Destino1.setSelectedIndex(0);
+        Destino_Externos.setSelectedIndex(0);
         Deshabilitar();
     }
     
     public void Limpiar_Internos(){
-        Codigo2.setText("");
+        Codigo_Internos.setText("");
         Buscar2.setText("");
-        Equipo2.setText("");
-        Fecha1_2.setText("");
-        Fecha2_2.setText("");
-        Ubicacion2.setSelectedIndex(0);
-        Destino2.setSelectedIndex(0);
+        Equipo_Internos.setText("");
+        Fecha1_Internos.setText("");
+        Fecha2_Internos.setText("");
+        Ubicacion_Internos.setSelectedIndex(0);
+        Destino_Internos.setSelectedIndex(0);
         Deshabilitar2();
     }
     
-    public void Guardar_Externos(){
-        
+    public void Deshabilitar(){
+        Codigo_Externos.setEnabled(false);
+        Buscar1.setEnabled(false);
+        Equipo_Externos.setEnabled(false);
+        Fecha1_Externos.setEnabled(false);
+        Fecha2_Externos.setEnabled(false);
+        Ubicacion_Externos.setEnabled(false);
+        Sucursal.setEnabled(false);
+        Destino_Externos.setEnabled(false);
     }
     
-    public void Guardar_Internos(){
-        
+    public void Deshabilitar2(){
+        Codigo_Internos.setEnabled(false);
+        Buscar2.setEnabled(false);
+        Equipo_Internos.setEnabled(false);
+        Fecha1_Internos.setEnabled(false);
+        Fecha2_Internos.setEnabled(false);
+        Ubicacion_Internos.setEnabled(false);
+        Destino_Internos.setEnabled(false);
     }
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -99,44 +122,44 @@ public class Traslados extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        Ubicacion1 = new javax.swing.JComboBox();
-        Destino1 = new javax.swing.JComboBox();
-        Fecha1_1 = new javax.swing.JFormattedTextField();
-        Fecha2_1 = new javax.swing.JFormattedTextField();
+        Ubicacion_Externos = new javax.swing.JComboBox();
+        Destino_Externos = new javax.swing.JComboBox();
+        Fecha1_Externos = new javax.swing.JFormattedTextField();
+        Fecha2_Externos = new javax.swing.JFormattedTextField();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         Sucursal = new javax.swing.JComboBox();
         jLabel16 = new javax.swing.JLabel();
-        Codigo1 = new javax.swing.JFormattedTextField();
+        Codigo_Externos = new javax.swing.JFormattedTextField();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        Equipo1 = new javax.swing.JTextField();
+        Equipo_Externos = new javax.swing.JTextField();
         Buscar1 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        Ubicacion2 = new javax.swing.JComboBox();
-        Destino2 = new javax.swing.JComboBox();
-        Fecha2_2 = new javax.swing.JFormattedTextField();
+        Ubicacion_Internos = new javax.swing.JComboBox();
+        Destino_Internos = new javax.swing.JComboBox();
+        Fecha2_Internos = new javax.swing.JFormattedTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
-        Codigo2 = new javax.swing.JFormattedTextField();
+        Codigo_Internos = new javax.swing.JFormattedTextField();
         Buscar2 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
-        Equipo2 = new javax.swing.JTextField();
+        Equipo_Internos = new javax.swing.JTextField();
         jLabel23 = new javax.swing.JLabel();
-        Fecha1_2 = new javax.swing.JFormattedTextField();
+        Fecha1_Internos = new javax.swing.JFormattedTextField();
         jLabel27 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("TRASLADOS");
         setResizable(false);
 
@@ -174,40 +197,41 @@ public class Traslados extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(47, 131, 47), 3), "EXTERNOS", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 20), new java.awt.Color(47, 131, 47))); // NOI18N
 
-        Ubicacion1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        Ubicacion1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "SISTEMAS & TI", "TALENTO HUMANO", "CHASS", "LINEA DE CAJA", "CAJA PRINCIPAL", "COMPRA DE PERECEDEROS", "COMPRA NO PERECEDEROS", "LIQUIDACIÓN", "DIGITALIZACIÓN", "SUPERVISORES", "SUB-GERENTES", "RECEPTOR DE PERECEDEROS", "RECEPTOR NO PERECEDEROS", "PREVENCION Y CONTROL", "CCTV", "HABLADORES", "ENFERMERIA", "CHARCUTERIA", "ATENCIÓN AL CLIENTE" }));
-        Ubicacion1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Ubicacion_Externos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Ubicacion_Externos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "SISTEMAS & TI", "TALENTO HUMANO", "CHASS", "LINEA DE CAJA", "CAJA PRINCIPAL", "COMPRA DE PERECEDEROS", "COMPRA NO PERECEDEROS", "LIQUIDACIÓN", "DIGITALIZACIÓN", "SUPERVISORES", "SUB-GERENTES", "RECEPTOR DE PERECEDEROS", "RECEPTOR NO PERECEDEROS", "PREVENCION Y CONTROL", "CCTV", "HABLADORES", "ENFERMERIA", "CHARCUTERIA", "ATENCIÓN AL CLIENTE" }));
+        Ubicacion_Externos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        Destino1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        Destino1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "ROTARIA ", "MADRE JUANA", "MERIDA ", "BARINAS", "SANTA BARBARA", "BARQUISIMETO", "ACARIGUA", "CABIMAS", "SAN JOSESITO" }));
-        Destino1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        Destino1.addActionListener(new java.awt.event.ActionListener() {
+        Destino_Externos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Destino_Externos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "ROTARIA ", "MADRE JUANA", "MERIDA ", "BARINAS", "SANTA BARBARA", "BARQUISIMETO", "ACARIGUA", "CABIMAS", "SAN JOSESITO" }));
+        Destino_Externos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Destino_Externos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Destino1ActionPerformed(evt);
+                Destino_ExternosActionPerformed(evt);
             }
         });
 
-        Fecha1_1.setEditable(false);
-        Fecha1_1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Fecha1_Externos.setEditable(false);
+        Fecha1_Externos.setBackground(new java.awt.Color(255, 255, 255));
+        Fecha1_Externos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         try {
-            Fecha1_1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("  ## /  ##  /  ####")));
+            Fecha1_Externos.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("  ## /  ##  /  ####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        Fecha1_1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        Fecha1_1.addActionListener(new java.awt.event.ActionListener() {
+        Fecha1_Externos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Fecha1_Externos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Fecha1_1ActionPerformed(evt);
+                Fecha1_ExternosActionPerformed(evt);
             }
         });
 
-        Fecha2_1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Fecha2_Externos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         try {
-            Fecha2_1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("  ## /  ##  /  ####")));
+            Fecha2_Externos.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("  ## /  ##  /  ####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        Fecha2_1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Fecha2_Externos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel12.setText("      UBICACIÓN:    ");
@@ -228,13 +252,13 @@ public class Traslados extends javax.swing.JFrame {
         jLabel16.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel16.setText("      SUCURSAL:    ");
 
-        Codigo1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Codigo_Externos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         try {
-            Codigo1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("   759-150-####")));
+            Codigo_Externos.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("   759-150-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        Codigo1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Codigo_Externos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         jLabel17.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel17.setText("         EQUIPO:");
@@ -242,9 +266,10 @@ public class Traslados extends javax.swing.JFrame {
         jLabel18.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel18.setText("CODIGO DEL EQUIPO:");
 
-        Equipo1.setEditable(false);
-        Equipo1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        Equipo1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Equipo_Externos.setEditable(false);
+        Equipo_Externos.setBackground(new java.awt.Color(255, 255, 255));
+        Equipo_Externos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Equipo_Externos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         Buscar1.setBackground(new java.awt.Color(255, 255, 255));
         Buscar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes.20x20/Search.png"))); // NOI18N
@@ -291,8 +316,8 @@ public class Traslados extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Sucursal, 0, 155, Short.MAX_VALUE)
-                            .addComponent(Fecha2_1)
-                            .addComponent(Destino1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(Fecha2_Externos)
+                            .addComponent(Destino_Externos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -310,13 +335,13 @@ public class Traslados extends javax.swing.JFrame {
                                 .addComponent(jLabel12)
                                 .addGap(34, 34, 34)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Ubicacion1, 0, 1, Short.MAX_VALUE)
-                            .addComponent(Fecha1_1)
+                            .addComponent(Ubicacion_Externos, 0, 1, Short.MAX_VALUE)
+                            .addComponent(Fecha1_Externos)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(Codigo1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(Codigo_Externos, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(Buscar1))
-                            .addComponent(Equipo1, javax.swing.GroupLayout.Alignment.TRAILING))))
+                            .addComponent(Equipo_Externos, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(114, 114, 114)
@@ -337,20 +362,20 @@ public class Traslados extends javax.swing.JFrame {
                 .addGap(22, 22, 22)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(Codigo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Codigo_Externos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel18))
                     .addComponent(Buscar1))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel17)
-                    .addComponent(Equipo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Equipo_Externos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Fecha1_1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Fecha1_Externos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel14))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Ubicacion1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Ubicacion_Externos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -358,11 +383,11 @@ public class Traslados extends javax.swing.JFrame {
                     .addComponent(jLabel16))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Destino1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Destino_Externos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel13))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Fecha2_1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Fecha2_Externos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel15))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -375,34 +400,34 @@ public class Traslados extends javax.swing.JFrame {
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(47, 131, 47), 3), "INTERNOS", javax.swing.border.TitledBorder.RIGHT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 20), new java.awt.Color(47, 131, 47))); // NOI18N
         jPanel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
-        Ubicacion2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        Ubicacion2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "SISTEMAS & TI", "TALENTO HUMANO", "CHASS", "LINEA DE CAJA", "CAJA PRINCIPAL", "COMPRA DE PERECEDEROS", "COMPRA NO PERECEDEROS", "LIQUIDACIÓN", "DIGITALIZACIÓN", "SUPERVISORES", "SUB-GERENTES", "RECEPTOR DE PERECEDEROS", "RECEPTOR NO PERECEDEROS", "PREVENCION Y CONTROL", "CCTV", "HABLADORES", "ENFERMERIA", "CHARCUTERIA", "ATENCIÓN AL CLIENTE" }));
-        Ubicacion2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        Ubicacion2.addActionListener(new java.awt.event.ActionListener() {
+        Ubicacion_Internos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Ubicacion_Internos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "SISTEMAS & TI", "TALENTO HUMANO", "CHASS", "LINEA DE CAJA", "CAJA PRINCIPAL", "COMPRA DE PERECEDEROS", "COMPRA NO PERECEDEROS", "LIQUIDACIÓN", "DIGITALIZACIÓN", "SUPERVISORES", "SUB-GERENTES", "RECEPTOR DE PERECEDEROS", "RECEPTOR NO PERECEDEROS", "PREVENCION Y CONTROL", "CCTV", "HABLADORES", "ENFERMERIA", "CHARCUTERIA", "ATENCIÓN AL CLIENTE" }));
+        Ubicacion_Internos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Ubicacion_Internos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Ubicacion2ActionPerformed(evt);
+                Ubicacion_InternosActionPerformed(evt);
             }
         });
 
-        Destino2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        Destino2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "SISTEMAS & TI", "TALENTO HUMANO", "CHASS", "LINEA DE CAJA", "CAJA PRINCIPAL", "COMPRA DE PERECEDEROS", "COMPRA NO PERECEDEROS", "LIQUIDACIÓN", "DIGITALIZACIÓN", "SUPERVISORES", "SUB-GERENTES", "RECEPTOR DE PERECEDEROS", "RECEPTOR NO PERECEDEROS", "PREVENCION Y CONTROL", "CCTV", "HABLADORES", "ENFERMERIA", "CHARCUTERIA", "ATENCIÓN AL CLIENTE" }));
-        Destino2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        Destino2.addActionListener(new java.awt.event.ActionListener() {
+        Destino_Internos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Destino_Internos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "SISTEMAS & TI", "TALENTO HUMANO", "CHASS", "LINEA DE CAJA", "CAJA PRINCIPAL", "COMPRA DE PERECEDEROS", "COMPRA NO PERECEDEROS", "LIQUIDACIÓN", "DIGITALIZACIÓN", "SUPERVISORES", "SUB-GERENTES", "RECEPTOR DE PERECEDEROS", "RECEPTOR NO PERECEDEROS", "PREVENCION Y CONTROL", "CCTV", "HABLADORES", "ENFERMERIA", "CHARCUTERIA", "ATENCIÓN AL CLIENTE" }));
+        Destino_Internos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Destino_Internos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Destino2ActionPerformed(evt);
+                Destino_InternosActionPerformed(evt);
             }
         });
 
-        Fecha2_2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Fecha2_Internos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         try {
-            Fecha2_2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("  ## /  ##  /  ####")));
+            Fecha2_Internos.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("  ## /  ##  /  ####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        Fecha2_2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        Fecha2_2.addActionListener(new java.awt.event.ActionListener() {
+        Fecha2_Internos.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        Fecha2_Internos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Fecha2_2ActionPerformed(evt);
+                Fecha2_InternosActionPerformed(evt);
             }
         });
 
@@ -418,13 +443,13 @@ public class Traslados extends javax.swing.JFrame {
         jLabel20.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel20.setText("CODIGO DEL EQUIPO:");
 
-        Codigo2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Codigo_Internos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         try {
-            Codigo2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("   759-150-####")));
+            Codigo_Internos.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("   759-150-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        Codigo2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Codigo_Internos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         Buscar2.setBackground(new java.awt.Color(255, 255, 255));
         Buscar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes.20x20/Search.png"))); // NOI18N
@@ -438,24 +463,26 @@ public class Traslados extends javax.swing.JFrame {
         jLabel22.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel22.setText("         EQUIPO:");
 
-        Equipo2.setEditable(false);
-        Equipo2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        Equipo2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Equipo_Internos.setEditable(false);
+        Equipo_Internos.setBackground(new java.awt.Color(255, 255, 255));
+        Equipo_Internos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Equipo_Internos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel23.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel23.setText("ULTIMO TRASLADO:");
 
-        Fecha1_2.setEditable(false);
-        Fecha1_2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Fecha1_Internos.setEditable(false);
+        Fecha1_Internos.setBackground(new java.awt.Color(255, 255, 255));
+        Fecha1_Internos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         try {
-            Fecha1_2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("  ## /  ##  /  ####")));
+            Fecha1_Internos.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("  ## /  ##  /  ####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        Fecha1_2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        Fecha1_2.addActionListener(new java.awt.event.ActionListener() {
+        Fecha1_Internos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Fecha1_Internos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Fecha1_2ActionPerformed(evt);
+                Fecha1_InternosActionPerformed(evt);
             }
         });
 
@@ -490,15 +517,15 @@ public class Traslados extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel11)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Fecha2_2, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(Fecha2_Internos, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Ubicacion2, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(Ubicacion_Internos, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Destino2, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(Destino_Internos, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -511,12 +538,12 @@ public class Traslados extends javax.swing.JFrame {
                                 .addComponent(jLabel23)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Equipo2)
+                            .addComponent(Equipo_Internos)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(Codigo2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(Codigo_Internos, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(Buscar2))
-                            .addComponent(Fecha1_2))))
+                            .addComponent(Fecha1_Internos))))
                 .addContainerGap())
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(113, 113, 113)
@@ -537,28 +564,28 @@ public class Traslados extends javax.swing.JFrame {
                 .addGap(22, 22, 22)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(Codigo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Codigo_Internos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel20))
                     .addComponent(Buscar2))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel22)
-                    .addComponent(Equipo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Equipo_Internos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Fecha1_2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Fecha1_Internos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel23))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Ubicacion2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Ubicacion_Internos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
                 .addGap(26, 26, 26)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Destino2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Destino_Internos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9))
                 .addGap(28, 28, 28)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Fecha2_2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Fecha2_Internos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11))
                 .addGap(21, 21, 21))
         );
@@ -617,33 +644,33 @@ public class Traslados extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jLabel5MouseClicked
 
-    private void Fecha1_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Fecha1_1ActionPerformed
+    private void Fecha1_ExternosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Fecha1_ExternosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Fecha1_1ActionPerformed
+    }//GEN-LAST:event_Fecha1_ExternosActionPerformed
 
     private void Buscar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Buscar1MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_Buscar1MouseClicked
 
-    private void Destino2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Destino2ActionPerformed
+    private void Destino_InternosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Destino_InternosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Destino2ActionPerformed
+    }//GEN-LAST:event_Destino_InternosActionPerformed
 
     private void Buscar2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Buscar2MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_Buscar2MouseClicked
 
-    private void Fecha1_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Fecha1_2ActionPerformed
+    private void Fecha1_InternosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Fecha1_InternosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Fecha1_2ActionPerformed
+    }//GEN-LAST:event_Fecha1_InternosActionPerformed
 
-    private void Fecha2_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Fecha2_2ActionPerformed
+    private void Fecha2_InternosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Fecha2_InternosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Fecha2_2ActionPerformed
+    }//GEN-LAST:event_Fecha2_InternosActionPerformed
 
-    private void Ubicacion2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Ubicacion2ActionPerformed
+    private void Ubicacion_InternosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Ubicacion_InternosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Ubicacion2ActionPerformed
+    }//GEN-LAST:event_Ubicacion_InternosActionPerformed
 
     private void jLabel27MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel27MouseClicked
         Habilitar_Internos();
@@ -653,9 +680,9 @@ public class Traslados extends javax.swing.JFrame {
         Habilitar_Externos();
     }//GEN-LAST:event_jLabel29MouseClicked
 
-    private void Destino1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Destino1ActionPerformed
+    private void Destino_ExternosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Destino_ExternosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Destino1ActionPerformed
+    }//GEN-LAST:event_Destino_ExternosActionPerformed
 
     private void jLabel31MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel31MouseClicked
         Limpiar_Externos();
@@ -711,19 +738,19 @@ public class Traslados extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Buscar1;
     private javax.swing.JLabel Buscar2;
-    private javax.swing.JFormattedTextField Codigo1;
-    private javax.swing.JFormattedTextField Codigo2;
-    private javax.swing.JComboBox Destino1;
-    private javax.swing.JComboBox Destino2;
-    private javax.swing.JTextField Equipo1;
-    private javax.swing.JTextField Equipo2;
-    private javax.swing.JFormattedTextField Fecha1_1;
-    private javax.swing.JFormattedTextField Fecha1_2;
-    private javax.swing.JFormattedTextField Fecha2_1;
-    private javax.swing.JFormattedTextField Fecha2_2;
+    private javax.swing.JFormattedTextField Codigo_Externos;
+    private javax.swing.JFormattedTextField Codigo_Internos;
+    private javax.swing.JComboBox Destino_Externos;
+    private javax.swing.JComboBox Destino_Internos;
+    private javax.swing.JTextField Equipo_Externos;
+    private javax.swing.JTextField Equipo_Internos;
+    private javax.swing.JFormattedTextField Fecha1_Externos;
+    private javax.swing.JFormattedTextField Fecha1_Internos;
+    private javax.swing.JFormattedTextField Fecha2_Externos;
+    private javax.swing.JFormattedTextField Fecha2_Internos;
     private javax.swing.JComboBox Sucursal;
-    private javax.swing.JComboBox Ubicacion1;
-    private javax.swing.JComboBox Ubicacion2;
+    private javax.swing.JComboBox Ubicacion_Externos;
+    private javax.swing.JComboBox Ubicacion_Internos;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
