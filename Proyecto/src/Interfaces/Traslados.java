@@ -3,6 +3,7 @@ package Interfaces;
 
 import java.sql.Connection;
 import java.sql.Statement;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -35,6 +36,9 @@ public class Traslados extends javax.swing.JFrame {
         Fecha2_Internos.setEnabled(true);
         Ubicacion_Internos.setEnabled(true);
         Destino_Internos.setEnabled(true);
+        Nuevo2.setEnabled(false);
+        Guardar2.setEnabled(true);
+        Limpiar2.setEnabled(true);
     }
     
     public void Habilitar_Externos(){
@@ -46,6 +50,9 @@ public class Traslados extends javax.swing.JFrame {
         Ubicacion_Externos.setEnabled(true);
         Sucursal.setEnabled(true);
         Destino_Externos.setEnabled(true);
+        Nuevo1.setEnabled(false);
+        Guardar1.setEnabled(true);
+        Limpiar1.setEnabled(true);
     }
     
     public void Guardar_Externos(){
@@ -56,8 +63,13 @@ public class Traslados extends javax.swing.JFrame {
         Sucursales = Sucursal.getSelectedItem().toString();
         Destino = Destino_Externos.getSelectedItem().toString();
         Fecha2 = Fecha2_Externos.getText();
-        String valores = "'"+Codigo+"','"+Equipo+"','"+Fecha1+"','"+Ubicacion+"','"+Sucursales+"','"+Destino+"','"+Fecha2+"'";
-        cn.guardar("tras_externos", valores);
+        if (Codigo.equals("") || Equipo.equals("") || Fecha1.equals("") || Ubicacion.equals("") || Sucursales.equals("") || Destino.equals("") || Fecha2.equals("")){
+            JOptionPane.showMessageDialog(this, "DEBE LLENAR TODOS LOS CAMPOS..!", "ADVERTENCIA..!", JOptionPane.ERROR_MESSAGE);
+        } else {
+            String valores = "'"+Codigo+"','"+Equipo+"','"+Fecha1+"','"+Ubicacion+"','"+Sucursales+"','"+Destino+"','"+Fecha2+"'";
+            cn.guardar("tras_externos", valores);
+        }
+        
     }
     
     public void Guardar_Internos(){
@@ -67,8 +79,13 @@ public class Traslados extends javax.swing.JFrame {
         Ubicacion = Ubicacion_Internos.getSelectedItem().toString();
         Destino = Destino_Internos.getSelectedItem().toString();
         Fecha2 = Fecha2_Internos.getText();
-        String valores = "'"+Codigo+"','"+Equipo+"','"+Fecha1+"','"+Ubicacion+"','"+Destino+"','"+Fecha2+"'";
-        cn.guardar("tras_internos", valores);
+        if (Codigo.equals("") || Equipo.equals("") || Fecha1.equals("") || Ubicacion.equals("") || Destino.equals("") || Fecha2.equals("")) {
+            JOptionPane.showMessageDialog(this, "DEBE LLENAR TODOS LOS CAMPOS..!", "ADVERTENCIA..!", JOptionPane.ERROR_MESSAGE);
+        } else {
+            String valores = "'"+Codigo+"','"+Equipo+"','"+Fecha1+"','"+Ubicacion+"','"+Destino+"','"+Fecha2+"'";
+            cn.guardar("tras_internos", valores);
+        }
+        
     }
     
     public void Limpiar_Externos(){
@@ -102,6 +119,9 @@ public class Traslados extends javax.swing.JFrame {
         Ubicacion_Externos.setEnabled(false);
         Sucursal.setEnabled(false);
         Destino_Externos.setEnabled(false);
+        Nuevo1.setEnabled(true);
+        Guardar1.setEnabled(false);
+        Limpiar1.setEnabled(false);
     }
     
     public void Deshabilitar2(){
@@ -112,6 +132,9 @@ public class Traslados extends javax.swing.JFrame {
         Fecha2_Internos.setEnabled(false);
         Ubicacion_Internos.setEnabled(false);
         Destino_Internos.setEnabled(false);
+        Nuevo2.setEnabled(true);
+        Guardar2.setEnabled(false);
+        Limpiar2.setEnabled(false);
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -137,9 +160,9 @@ public class Traslados extends javax.swing.JFrame {
         jLabel18 = new javax.swing.JLabel();
         Equipo_Externos = new javax.swing.JTextField();
         Buscar1 = new javax.swing.JLabel();
-        jLabel30 = new javax.swing.JLabel();
-        jLabel29 = new javax.swing.JLabel();
-        jLabel31 = new javax.swing.JLabel();
+        Guardar1 = new javax.swing.JLabel();
+        Nuevo1 = new javax.swing.JLabel();
+        Limpiar1 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         Ubicacion_Internos = new javax.swing.JComboBox();
@@ -155,9 +178,9 @@ public class Traslados extends javax.swing.JFrame {
         Equipo_Internos = new javax.swing.JTextField();
         jLabel23 = new javax.swing.JLabel();
         Fecha1_Internos = new javax.swing.JFormattedTextField();
-        jLabel27 = new javax.swing.JLabel();
-        jLabel25 = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
+        Nuevo2 = new javax.swing.JLabel();
+        Guardar2 = new javax.swing.JLabel();
+        Limpiar2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("TRASLADOS");
@@ -280,24 +303,24 @@ public class Traslados extends javax.swing.JFrame {
             }
         });
 
-        jLabel30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes.20x20/Floppy.png"))); // NOI18N
-        jLabel30.addMouseListener(new java.awt.event.MouseAdapter() {
+        Guardar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes.20x20/Floppy.png"))); // NOI18N
+        Guardar1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel30MouseClicked(evt);
+                Guardar1MouseClicked(evt);
             }
         });
 
-        jLabel29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes.20x20/Add.png"))); // NOI18N
-        jLabel29.addMouseListener(new java.awt.event.MouseAdapter() {
+        Nuevo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes.20x20/Add.png"))); // NOI18N
+        Nuevo1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel29MouseClicked(evt);
+                Nuevo1MouseClicked(evt);
             }
         });
 
-        jLabel31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes.20x20/Refresh.png"))); // NOI18N
-        jLabel31.addMouseListener(new java.awt.event.MouseAdapter() {
+        Limpiar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes.20x20/Refresh.png"))); // NOI18N
+        Limpiar1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel31MouseClicked(evt);
+                Limpiar1MouseClicked(evt);
             }
         });
 
@@ -345,20 +368,20 @@ public class Traslados extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(114, 114, 114)
-                .addComponent(jLabel29)
+                .addComponent(Nuevo1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel30)
+                .addComponent(Guardar1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel31)
+                .addComponent(Limpiar1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel29)
-                    .addComponent(jLabel30)
-                    .addComponent(jLabel31))
+                    .addComponent(Nuevo1)
+                    .addComponent(Guardar1)
+                    .addComponent(Limpiar1))
                 .addGap(22, 22, 22)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -486,24 +509,24 @@ public class Traslados extends javax.swing.JFrame {
             }
         });
 
-        jLabel27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes.20x20/Add.png"))); // NOI18N
-        jLabel27.addMouseListener(new java.awt.event.MouseAdapter() {
+        Nuevo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes.20x20/Add.png"))); // NOI18N
+        Nuevo2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel27MouseClicked(evt);
+                Nuevo2MouseClicked(evt);
             }
         });
 
-        jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes.20x20/Floppy.png"))); // NOI18N
-        jLabel25.addMouseListener(new java.awt.event.MouseAdapter() {
+        Guardar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes.20x20/Floppy.png"))); // NOI18N
+        Guardar2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel25MouseClicked(evt);
+                Guardar2MouseClicked(evt);
             }
         });
 
-        jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes.20x20/Refresh.png"))); // NOI18N
-        jLabel24.addMouseListener(new java.awt.event.MouseAdapter() {
+        Limpiar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes.20x20/Refresh.png"))); // NOI18N
+        Limpiar2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel24MouseClicked(evt);
+                Limpiar2MouseClicked(evt);
             }
         });
 
@@ -547,20 +570,20 @@ public class Traslados extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(113, 113, 113)
-                .addComponent(jLabel27)
+                .addComponent(Nuevo2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel25)
+                .addComponent(Guardar2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel24)
+                .addComponent(Limpiar2)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel27)
-                    .addComponent(jLabel25)
-                    .addComponent(jLabel24))
+                    .addComponent(Nuevo2)
+                    .addComponent(Guardar2)
+                    .addComponent(Limpiar2))
                 .addGap(22, 22, 22)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -672,33 +695,33 @@ public class Traslados extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_Ubicacion_InternosActionPerformed
 
-    private void jLabel27MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel27MouseClicked
+    private void Nuevo2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Nuevo2MouseClicked
         Habilitar_Internos();
-    }//GEN-LAST:event_jLabel27MouseClicked
+    }//GEN-LAST:event_Nuevo2MouseClicked
 
-    private void jLabel29MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel29MouseClicked
+    private void Nuevo1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Nuevo1MouseClicked
         Habilitar_Externos();
-    }//GEN-LAST:event_jLabel29MouseClicked
+    }//GEN-LAST:event_Nuevo1MouseClicked
 
     private void Destino_ExternosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Destino_ExternosActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Destino_ExternosActionPerformed
 
-    private void jLabel31MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel31MouseClicked
+    private void Limpiar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Limpiar1MouseClicked
         Limpiar_Externos();
-    }//GEN-LAST:event_jLabel31MouseClicked
+    }//GEN-LAST:event_Limpiar1MouseClicked
 
-    private void jLabel24MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel24MouseClicked
+    private void Limpiar2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Limpiar2MouseClicked
         Limpiar_Internos();
-    }//GEN-LAST:event_jLabel24MouseClicked
+    }//GEN-LAST:event_Limpiar2MouseClicked
 
-    private void jLabel30MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel30MouseClicked
+    private void Guardar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Guardar1MouseClicked
         Guardar_Externos();
-    }//GEN-LAST:event_jLabel30MouseClicked
+    }//GEN-LAST:event_Guardar1MouseClicked
 
-    private void jLabel25MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel25MouseClicked
+    private void Guardar2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Guardar2MouseClicked
         Guardar_Internos();
-    }//GEN-LAST:event_jLabel25MouseClicked
+    }//GEN-LAST:event_Guardar2MouseClicked
 
     /**
      * @param args the command line arguments
@@ -748,6 +771,12 @@ public class Traslados extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField Fecha1_Internos;
     private javax.swing.JFormattedTextField Fecha2_Externos;
     private javax.swing.JFormattedTextField Fecha2_Internos;
+    private javax.swing.JLabel Guardar1;
+    private javax.swing.JLabel Guardar2;
+    private javax.swing.JLabel Limpiar1;
+    private javax.swing.JLabel Limpiar2;
+    private javax.swing.JLabel Nuevo1;
+    private javax.swing.JLabel Nuevo2;
     private javax.swing.JComboBox Sucursal;
     private javax.swing.JComboBox Ubicacion_Externos;
     private javax.swing.JComboBox Ubicacion_Internos;
@@ -763,12 +792,6 @@ public class Traslados extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel29;
-    private javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;

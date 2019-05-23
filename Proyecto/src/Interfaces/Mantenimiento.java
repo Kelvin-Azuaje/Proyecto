@@ -3,6 +3,7 @@ package Interfaces;
 
 import java.sql.Connection;
 import java.sql.Statement;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -92,9 +93,12 @@ public class Mantenimiento extends javax.swing.JFrame {
         Observa = Observaciones.getText();
         Ubicacion = UbicacionE.getSelectedItem().toString();
         Fecha2 = Fecha2_E.getText();
-        String valores = "'"+Codigo+"','"+Equipo+"','"+Fecha1+"','"+Observa+"','"+Ubicacion+"','"+Fecha2+"'";
-        cn.guardar("averiados", valores);
-        Limpiar_Entrada();
+        if (Codigo.equals("") || Equipo.equals("") || Fecha1.equals("") || Observa.equals("") || Ubicacion.equals("") || Fecha2.equals("")) {
+            JOptionPane.showMessageDialog(this, "DEBE LLENAR TODOS LOS CAMPOS..!", "ADVERTENCIA..!", JOptionPane.ERROR_MESSAGE);
+        } else {
+            String valores = "'"+Codigo+"','"+Equipo+"','"+Fecha1+"','"+Observa+"','"+Ubicacion+"','"+Fecha2+"'";
+            cn.guardar("averiados", valores);
+        }
     }
     
     public void Guardar_Salida(){
@@ -104,9 +108,12 @@ public class Mantenimiento extends javax.swing.JFrame {
         Observa = Observaciones.getText();
         Ubicacion = UbicacionS.getText();
         Fecha2 = Fecha2_S.getText();
-        String valores = "'"+Codigo+"','"+Equipo+"','"+Fecha1+"','"+Observa+"','"+Ubicacion+"','"+Fecha2+"'";
-        cn.guardar("averiados", valores);
-        Limpiar_Salida();
+        if (Codigo.equals("") || Equipo.equals("") || Fecha1.equals("") || Observa.equals("") || Ubicacion.equals("") || Fecha2.equals("")) {
+            JOptionPane.showMessageDialog(this, "DEBE LLENAR TODOS LOS CAMPOS..!", "ADVERTENCIA..!", JOptionPane.ERROR_MESSAGE);
+        } else {
+            String valores = "'"+Codigo+"','"+Equipo+"','"+Fecha1+"','"+Observa+"','"+Ubicacion+"','"+Fecha2+"'";
+            cn.guardar("averiados", valores);
+        }
     }
     
     @SuppressWarnings("unchecked")

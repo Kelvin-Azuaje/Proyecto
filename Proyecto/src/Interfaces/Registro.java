@@ -3,6 +3,7 @@ package Interfaces;
 
 import java.sql.Connection;
 import java.sql.Statement;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -43,9 +44,12 @@ public class Registro extends javax.swing.JFrame {
         Tipo = txt_Tipo.getSelectedItem().toString();
         Descripcion = txt_Descripcion.getText();
         Destino = txt_Destino.getSelectedItem().toString();
-        String valores = "'"+Codigo+"','"+Tipo+"','"+Descripcion+"','"+Destino+"'";
-        cn.guardar("equipos", valores);
-        Limpiar();
+        if (Codigo.equals("") || Tipo.equals("") || Descripcion.equals("") || Destino.equals("")) {
+            JOptionPane.showMessageDialog(this, "DEBE LLENAR TODOS LOS CAMPOS..!", "ADVERTENCIA..!", JOptionPane.ERROR_MESSAGE);
+        } else {
+            String valores = "'"+Codigo+"','"+Tipo+"','"+Descripcion+"','"+Destino+"'";
+            cn.guardar("equipos", valores);
+        }
     } 
     
     @SuppressWarnings("unchecked")
@@ -70,7 +74,7 @@ public class Registro extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         txt_Descripcion = new javax.swing.JTextArea();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("REGISTRO DE EQUIPOS");
         setResizable(false);
 
@@ -278,7 +282,6 @@ public class Registro extends javax.swing.JFrame {
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
         Guardar();
-        Limpiar();
     }//GEN-LAST:event_jLabel3MouseClicked
 
     private void txt_CodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_CodigoActionPerformed
