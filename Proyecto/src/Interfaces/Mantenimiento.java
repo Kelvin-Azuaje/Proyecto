@@ -1,6 +1,7 @@
 
 package Interfaces;
 
+
 import java.sql.Connection;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
@@ -15,9 +16,10 @@ public class Mantenimiento extends javax.swing.JFrame {
     static Statement estatuto;
     
     Conexion_BD cn;
-    String Codigo, Equipo, Fecha1, Observa, Ubicacion, Fecha2;
+    String Codigo, Equipo, Fecha1, Observa, Ubicacion, Fecha2, TraerCodigo;
     Conexion cc= new  Conexion();
     Connection ct= cc.enlazar();
+    Conex conex = new Conex();
     
     public Mantenimiento() {
         initComponents();
@@ -26,6 +28,10 @@ public class Mantenimiento extends javax.swing.JFrame {
         Deshabilitar_Salida();
         cn = new Conexion_BD();
         cn.conectar();
+    }
+
+    Mantenimiento(String string) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public void Limpiar_Entrada(){
@@ -114,6 +120,12 @@ public class Mantenimiento extends javax.swing.JFrame {
             String valores = "'"+Codigo+"','"+Equipo+"','"+Fecha1+"','"+Observa+"','"+Ubicacion+"','"+Fecha2+"'";
             cn.guardar("averiados", valores);
         }
+    }
+    
+    public void Traer_Equipo(){
+        TraerCodigo = CodigoE.getText();
+        conex.setQuery("select * from equipos where codigo = " + TraerCodigo);
+        Mantenimiento man = conex.getMantenimiento();
     }
     
     @SuppressWarnings("unchecked")
@@ -602,7 +614,7 @@ public class Mantenimiento extends javax.swing.JFrame {
     }//GEN-LAST:event_Fecha1_EActionPerformed
 
     private void Buscar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Buscar1MouseClicked
-        // TODO add your handling code here:
+        Traer_Equipo();
     }//GEN-LAST:event_Buscar1MouseClicked
 
     private void jLabel29MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel29MouseClicked
