@@ -35,12 +35,12 @@ public class Conex {
         }
     }
     
-    public ClaseMantenimientoEntrada getEquipos1(){
-        ClaseMantenimientoEntrada equi = null;
+    public Equipos getEquipos1(){
+        Equipos equi = null;
         try {
             resul = sentencia.executeQuery(query);
             if(resul.next()){
-                equi = new ClaseMantenimientoEntrada(resul.getString("TIPO"), resul.getString("EQUIPO"));
+                equi = new Equipos(resul.getString("TIPO"), resul.getString("EQUIPO"));
             }
         } catch (SQLException ex) {
             Logger.getLogger(Conex.class.getName()).log(Level.SEVERE, null, ex);
@@ -48,12 +48,12 @@ public class Conex {
         return equi;
     }
     
-    public ClaseMantenimientoSalida getEquipos2(){
-        ClaseMantenimientoSalida equi2 = null;
+    public Equipos2 getEquipos2(){
+        Equipos2 equi2 = null;
         try {
             resul = sentencia.executeQuery(query);
             if(resul.next()){
-                equi2 = new ClaseMantenimientoSalida(resul.getString("EQUIPO"), resul.getString("FECHA1"));
+                equi2 = new Equipos2(resul.getString("EQUIPO"), resul.getString("FECHA1"));
             }
         } catch (SQLException ex) {
             Logger.getLogger(Conex.class.getName()).log(Level.SEVERE, null, ex);
