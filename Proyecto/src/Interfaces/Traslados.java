@@ -139,19 +139,19 @@ public class Traslados extends javax.swing.JFrame {
     }
     
     public void Equipo_Externo(){
-        String TraerCodigoEntrada = Codigo_Externos.getText();
-        conex.setQuery("select * from equipos where CODIGO = '"+TraerCodigoEntrada+"'");
-        ClaseMantenimientoEntrada equi = conex.getEquipos1();
-        Equipo_Externos.setText(equi.getTipo());
-        Fecha1_Externos.setText(equi.getFecha());
+        String TraerCodigoExterno = Codigo_Externos.getText();
+        conex.setQuery("select * from equipos where CODIGO = '"+TraerCodigoExterno+"'");
+        ClaseTrasladosExternos traEx = conex.getClaseTrasladosExternos();
+        Equipo_Externos.setText(traEx.getTipo());
+        Fecha1_Externos.setText(traEx.getFecha1());
     }
     
     public void Equipo_Interno(){
-        String TraerCodigoEntrada = Codigo_Externos.getText();
-        conex.setQuery("select * from equipos where CODIGO = '"+TraerCodigoEntrada+"'");
-        ClaseMantenimientoEntrada equi = conex.getEquipos1();
-        Equipo_Internos.setText(equi.getTipo());
-        Fecha1_Internos.setText(equi.getFecha());
+        String TraerCodigoInterno = Codigo_Externos.getText();
+        conex.setQuery("select * from equipos where CODIGO = '"+TraerCodigoInterno+"'");
+        ClaseTrasladosInternos traIn = conex.getClaseTrasladosInternos();
+        Equipo_Internos.setText(traIn.getTipo());
+        Fecha1_Internos.setText(traIn.getFecha1());
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
