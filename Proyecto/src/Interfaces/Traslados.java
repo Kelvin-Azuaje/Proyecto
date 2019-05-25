@@ -141,7 +141,7 @@ public class Traslados extends javax.swing.JFrame {
     public void Equipo_Externo(){
         String TraerCodigoEntrada = Codigo_Externos.getText();
         conex.setQuery("select * from equipos where CODIGO = '"+TraerCodigoEntrada+"'");
-        Equipos equi = conex.getEquipos1();
+        ClaseMantenimientoEntrada equi = conex.getEquipos1();
         Equipo_Externos.setText(equi.getTipo());
         Fecha1_Externos.setText(equi.getFecha());
     }
@@ -149,7 +149,7 @@ public class Traslados extends javax.swing.JFrame {
     public void Equipo_Interno(){
         String TraerCodigoEntrada = Codigo_Externos.getText();
         conex.setQuery("select * from equipos where CODIGO = '"+TraerCodigoEntrada+"'");
-        Equipos equi = conex.getEquipos1();
+        ClaseMantenimientoEntrada equi = conex.getEquipos1();
         Equipo_Internos.setText(equi.getTipo());
         Fecha1_Internos.setText(equi.getFecha());
     }
