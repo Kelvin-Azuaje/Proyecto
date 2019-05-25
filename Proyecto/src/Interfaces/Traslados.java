@@ -18,6 +18,7 @@ public class Traslados extends javax.swing.JFrame {
     String Codigo, Equipo, Fecha1, Ubicacion, Sucursales, Destino, Fecha2;
     Conexion cc= new  Conexion();
     Connection ct= cc.enlazar();
+    Conex conex = new Conex();
     
     public Traslados() {
         initComponents();
@@ -135,6 +136,22 @@ public class Traslados extends javax.swing.JFrame {
         Nuevo2.setEnabled(true);
         Guardar2.setEnabled(false);
         Limpiar2.setEnabled(false);
+    }
+    
+    public void Equipo_Externo(){
+        String TraerCodigoEntrada = Codigo_Externos.getText();
+        conex.setQuery("select * from equipos where CODIGO = '"+TraerCodigoEntrada+"'");
+        Equipos equi = conex.getEquipos1();
+        Equipo_Externos.setText(equi.getTipo());
+        Fecha1_Externos.setText(equi.getFecha());
+    }
+    
+    public void Equipo_Interno(){
+        String TraerCodigoEntrada = Codigo_Externos.getText();
+        conex.setQuery("select * from equipos where CODIGO = '"+TraerCodigoEntrada+"'");
+        Equipos equi = conex.getEquipos1();
+        Equipo_Internos.setText(equi.getTipo());
+        Fecha1_Internos.setText(equi.getFecha());
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -672,7 +689,7 @@ public class Traslados extends javax.swing.JFrame {
     }//GEN-LAST:event_Fecha1_ExternosActionPerformed
 
     private void Buscar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Buscar1MouseClicked
-        // TODO add your handling code here:
+        Equipo_Externo();
     }//GEN-LAST:event_Buscar1MouseClicked
 
     private void Destino_InternosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Destino_InternosActionPerformed
@@ -680,7 +697,7 @@ public class Traslados extends javax.swing.JFrame {
     }//GEN-LAST:event_Destino_InternosActionPerformed
 
     private void Buscar2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Buscar2MouseClicked
-        // TODO add your handling code here:
+        Equipo_Interno();
     }//GEN-LAST:event_Buscar2MouseClicked
 
     private void Fecha1_InternosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Fecha1_InternosActionPerformed

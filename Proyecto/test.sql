@@ -1,3 +1,21 @@
+-- phpMyAdmin SQL Dump
+-- version 4.5.1
+-- http://www.phpmyadmin.net
+--
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 25-05-2019 a las 02:18:39
+-- Versión del servidor: 10.1.19-MariaDB
+-- Versión de PHP: 7.0.13
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
 --
 -- Base de datos: `test`
 --
@@ -22,7 +40,7 @@ CREATE TABLE `averiados` (
 --
 
 INSERT INTO `averiados` (`CODIGO`, `EQUIPO`, `FECHA1`, `OBSERVACIONES`, `UBICACION`, `FECHA2`) VALUES
-('   759-150-0002', 'GAVETA', '05/05/2019', 'LA GAVETA NO ABRE', 'LINEA DE CAJA', '07/05/2019');
+('   759-150-0001', 'CPU', '  05 /  05  /  2019', 'SE QUEMO', 'LINEA DE CAJA', '  24 /  05  /  2019');
 
 -- --------------------------------------------------------
 
@@ -34,21 +52,25 @@ CREATE TABLE `equipos` (
   `CODIGO` varchar(35) NOT NULL,
   `TIPO` text NOT NULL,
   `DESCRIPCION` text NOT NULL,
-  `DESTINO` text NOT NULL
+  `DESTINO` text NOT NULL,
+  `FECHA1` varchar(20) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=armscii8;
 
 --
 -- Volcado de datos para la tabla `equipos`
 --
 
-INSERT INTO `equipos` (`CODIGO`, `TIPO`, `DESCRIPCION`, `DESTINO`) VALUES
-('   759-150-0001', 'CPU', 'CPU, MARCA LG,\r\nPARA UTILIZARLO COMO CAJA', 'LINEA DE CAJA'),
-('   759-150-0005', 'IMPRESORA FISCAL', 'NUMERO DE POS 025\nZ1B5JJJH', 'CAJA PRINCIPAL'),
-('   759-150-0058', 'MOUSE', 'LED, MARCA VIT', 'HABLADORES'),
-('   759-150-0024', 'CPU', 'MARCA IBM', 'LINEA DE CAJA'),
-('   759-150-0045', 'ESCANER', 'TIPO PISTOLA, MARCA LG', 'LIQUIDACION'),
-('   759-150-0046', 'SWITCH', 'MARCA CISCO', 'CCTV'),
-('   759-150-0047', 'CPU', 'MARCA SAMSUNG', 'SUPERVISORES');
+INSERT INTO `equipos` (`CODIGO`, `TIPO`, `DESCRIPCION`, `DESTINO`, `FECHA1`) VALUES
+('   759-150-0005', 'CPU', 'MARCA LG, PROCESADOR i5', 'LINEA DE CAJA', '  05 /  05  /  2019'),
+('   759-150-0004', 'CPU', 'MARCA LG, PROCESADOR i5', 'LINEA DE CAJA', '  05 /  05  /  2019'),
+('   759-150-0003', 'CPU', 'MARCA LG, PROCESADOR i5', 'LINEA DE CAJA', '  05 /  05  /  2019'),
+('   759-150-0002', 'CPU', 'MARCA LG, PROCESADOR i5', 'LINEA DE CAJA', '  05 /  05  /  2019'),
+('   759-150-0001', 'CPU', 'MARCA LG, PROCESADOR i5', 'LINEA DE CAJA', '  05 /  05  /  2019'),
+('   759-150-0006', 'CPU', 'MARCA SAMSUNG, PROCESADOR i5', 'LINEA DE CAJA', '  05 /  05  /  2019'),
+('   759-150-0007', 'CPU', 'MARCA SAMSUNG, i5', 'LINEA DE CAJA', '  05 /  05  /  2019'),
+('   759-150-0008', 'CPU', 'MARCA IBM', 'LINEA DE CAJA', '  05 /  05  /  2019'),
+('   759-150-0009', 'CPU', 'MARCA THINKCENTER', 'LINEA DE CAJA', '  05 /  05  /  2019'),
+('   759-150-0010', 'CPU', 'MARCA THINKCENTER\nPROCESADOR i4', 'LINEA DE CAJA', '  05 /  05  /  2019');
 
 -- --------------------------------------------------------
 
@@ -66,13 +88,6 @@ CREATE TABLE `tras_externos` (
   `FECHA2` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Volcado de datos para la tabla `tras_externos`
---
-
-INSERT INTO `tras_externos` (`CODIGO`, `EQUIPO`, `FECHA1`, `UBICACION`, `SUCURSAL1`, `SUCURSAL2`, `FECHA2`) VALUES
-('   759-150-0003', 'PDT', '05/05/2019', 'SISTEMAS & TI', 'BARINAS', 'MERIDA', '07/05/2019');
-
 -- --------------------------------------------------------
 
 --
@@ -87,13 +102,6 @@ CREATE TABLE `tras_internos` (
   `DESTINO` text NOT NULL,
   `FECHA2` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `tras_internos`
---
-
-INSERT INTO `tras_internos` (`CODIGO`, `EQUIPO`, `FECHA1`, `UBICACION`, `DESTINO`, `FECHA2`) VALUES
-('   759-150-0004', 'MONITOR', '05/05/2019', 'TALENTO HUMANO', 'PRODUCCION', '07/05/2019');
 
 -- --------------------------------------------------------
 

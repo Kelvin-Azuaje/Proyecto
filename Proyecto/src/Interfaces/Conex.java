@@ -35,27 +35,39 @@ public class Conex {
         }
     }
     
-    
-    public Mantenimiento getMantenimiento(){
-        Mantenimiento p = null;
+    public Equipos getEquipos1(){
+        Equipos equi = null;
         try {
-            resul = sentencia .executeQuery(query);
-            
-            if (resul.next()) {
-                p = new Mantenimiento(resul.getString("TIPO"));
+            resul = sentencia.executeQuery(query);
+            if(resul.next()){
+                equi = new Equipos(resul.getString("TIPO"), resul.getString("EQUIPO"));
             }
         } catch (SQLException ex) {
             Logger.getLogger(Conex.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return p;
-    }
-    public String getQuery(){
-        return query;
-        
+        return equi;
     }
     
-    public void setQuery(String query){
-        this.query = query;
+    public Equipos2 getEquipos2(){
+        Equipos2 equi2 = null;
+        try {
+            resul = sentencia.executeQuery(query);
+            if(resul.next()){
+                equi2 = new Equipos2(resul.getString("EQUIPO"), resul.getString("FECHA1"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Conex.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return equi2;
     }
 
+    public String getQuery() {
+        return query;
+    }
+
+    public void setQuery(String query) {
+        this.query = query;
+    }
+    
+    
 }

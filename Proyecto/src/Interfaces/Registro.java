@@ -17,7 +17,7 @@ public class Registro extends javax.swing.JFrame {
         varibles de conexion y estatuto para conexion con BD
     */
     Conexion_BD cn;
-    String Codigo, Tipo, Descripcion, Destino;
+    String Codigo, Tipo, Descripcion, Destino, Fecha1;
     Conexion cc= new  Conexion();
     Connection ct= cc.enlazar();
     // variables donde se almacenan los datos capturados del formulario
@@ -44,10 +44,11 @@ public class Registro extends javax.swing.JFrame {
         Tipo = txt_Tipo.getSelectedItem().toString();
         Descripcion = txt_Descripcion.getText();
         Destino = txt_Destino.getSelectedItem().toString();
-        if (Codigo.equals("") || Tipo.equals("") || Descripcion.equals("") || Destino.equals("")) {
+        Fecha1 = txt_Fecha.getText();
+        if (Codigo.equals("") || Tipo.equals("") || Descripcion.equals("") || Destino.equals("") || Fecha1.equals("")) {
             JOptionPane.showMessageDialog(this, "DEBE LLENAR TODOS LOS CAMPOS..!", "ADVERTENCIA..!", JOptionPane.ERROR_MESSAGE);
         } else {
-            String valores = "'"+Codigo+"','"+Tipo+"','"+Descripcion+"','"+Destino+"'";
+            String valores = "'"+Codigo+"','"+Tipo+"','"+Descripcion+"','"+Destino+"','"+Fecha1+"'";
             cn.guardar("equipos", valores);
         }
     } 
@@ -73,6 +74,8 @@ public class Registro extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txt_Descripcion = new javax.swing.JTextArea();
+        jLabel2 = new javax.swing.JLabel();
+        txt_Fecha = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("REGISTRO DE EQUIPOS");
@@ -180,6 +183,17 @@ public class Registro extends javax.swing.JFrame {
         txt_Descripcion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         jScrollPane1.setViewportView(txt_Descripcion);
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setText("FECHA INGRESO:");
+
+        txt_Fecha.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        try {
+            txt_Fecha.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("  ## /  ##  /  ####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        txt_Fecha.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+
         javax.swing.GroupLayout Panel_DatosLayout = new javax.swing.GroupLayout(Panel_Datos);
         Panel_Datos.setLayout(Panel_DatosLayout);
         Panel_DatosLayout.setHorizontalGroup(
@@ -189,7 +203,6 @@ public class Registro extends javax.swing.JFrame {
                 .addGroup(Panel_DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(Panel_DatosLayout.createSequentialGroup()
                         .addComponent(jLabel11)
                         .addGap(0, 1, Short.MAX_VALUE)))
@@ -197,9 +210,20 @@ public class Registro extends javax.swing.JFrame {
                 .addGroup(Panel_DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txt_Codigo)
                     .addComponent(txt_Tipo, 0, 222, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(txt_Destino, 0, 1, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addGap(11, 11, 11))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panel_DatosLayout.createSequentialGroup()
+                .addGap(11, 11, 11)
+                .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(txt_Destino, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addGroup(Panel_DatosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txt_Fecha)
+                .addContainerGap())
         );
         Panel_DatosLayout.setVerticalGroup(
             Panel_DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -214,15 +238,20 @@ public class Registro extends javax.swing.JFrame {
                     .addComponent(jLabel9))
                 .addGap(18, 18, 18)
                 .addGroup(Panel_DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
                     .addGroup(Panel_DatosLayout.createSequentialGroup()
+                        .addGap(50, 50, 50)
                         .addComponent(jLabel11)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(18, 18, 18)
                 .addGroup(Panel_DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(txt_Destino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24))
+                    .addComponent(txt_Destino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10))
+                .addGap(18, 18, 18)
+                .addGroup(Panel_DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txt_Fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25))
         );
 
         javax.swing.GroupLayout panel1Layout = new javax.swing.GroupLayout(panel1);
@@ -328,6 +357,7 @@ public class Registro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -340,6 +370,7 @@ public class Registro extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField txt_Codigo;
     private javax.swing.JTextArea txt_Descripcion;
     private javax.swing.JComboBox txt_Destino;
+    private javax.swing.JFormattedTextField txt_Fecha;
     private javax.swing.JComboBox txt_Tipo;
     // End of variables declaration//GEN-END:variables
 }

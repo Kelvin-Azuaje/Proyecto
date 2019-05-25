@@ -16,7 +16,7 @@ public class Mantenimiento extends javax.swing.JFrame {
     static Statement estatuto;
     
     Conexion_BD cn;
-    String Codigo, Equipo, Fecha1, Observa, Ubicacion, Fecha2, TraerCodigo;
+    String Codigo, Equipo, Fecha1, Observa, Ubicacion, Fecha2;
     Conexion cc= new  Conexion();
     Connection ct= cc.enlazar();
     Conex conex = new Conex();
@@ -30,9 +30,7 @@ public class Mantenimiento extends javax.swing.JFrame {
         cn.conectar();
     }
 
-    Mantenimiento(String string) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+   
 
     public void Limpiar_Entrada(){
         CodigoE.setText("");
@@ -41,6 +39,7 @@ public class Mantenimiento extends javax.swing.JFrame {
         UbicacionE.setSelectedIndex(0);
         FallaE.setText("");
         Fecha2_E.setText("");
+        Deshabilitar_Entrada();
     }
     
     public void Limpiar_Salida(){
@@ -50,6 +49,7 @@ public class Mantenimiento extends javax.swing.JFrame {
         Fecha2_S.setText("");
         Observaciones.setText("");
         Fecha1_S.setText("");
+        Deshabilitar_Salida();
     }
     
     public void Habilitar_Entrada(){
@@ -60,6 +60,10 @@ public class Mantenimiento extends javax.swing.JFrame {
         FallaE.setEnabled(true);
         UbicacionE.setEnabled(true);
         Fecha2_E.setEnabled(true);
+        btn_Habilitar1.setEnabled(false);
+        btn_Guardar1.setEnabled(true);
+        btn_Limpiar1.setEnabled(true);
+        Deshabilitar_Salida();
     }
     
     public void Habilitar_Salida(){
@@ -70,6 +74,10 @@ public class Mantenimiento extends javax.swing.JFrame {
         Observaciones.setEnabled(true);
         UbicacionS.setEnabled(true);
         Fecha1_S.setEnabled(true);
+        btn_Habilitar2.setEnabled(false);
+        btn_Guardar2.setEnabled(true);
+        btn_Limpiar2.setEnabled(true);
+        Deshabilitar_Entrada();
     }
     
     public void Deshabilitar_Entrada(){
@@ -80,6 +88,9 @@ public class Mantenimiento extends javax.swing.JFrame {
         FallaE.setEnabled(false);
         UbicacionE.setEnabled(false);
         Fecha2_E.setEnabled(false);
+        btn_Habilitar1.setEnabled(true);
+        btn_Guardar1.setEnabled(false);
+        btn_Limpiar1.setEnabled(false);
     }
     
     public void Deshabilitar_Salida(){
@@ -90,16 +101,19 @@ public class Mantenimiento extends javax.swing.JFrame {
         Observaciones.setEnabled(false);
         UbicacionS.setEnabled(false);
         Fecha1_S.setEnabled(false);
+        btn_Habilitar2.setEnabled(true);
+        btn_Guardar2.setEnabled(false);
+        btn_Limpiar2.setEnabled(false);
     }
     
     public void Guardar_Entrada(){
         Codigo = CodigoE.getText();
         Equipo = EquipoE.getText();
         Fecha1 = Fecha1_E.getText();
-        Observa = Observaciones.getText();
+        Observa = FallaE.getText();
         Ubicacion = UbicacionE.getSelectedItem().toString();
         Fecha2 = Fecha2_E.getText();
-        if (Codigo.equals("") || Equipo.equals("") || Fecha1.equals("") || Observa.equals("") || Ubicacion.equals("") || Fecha2.equals("")) {
+        if (EquipoE.equals("") || Fecha1.equals("") || Observa.equals("") || Ubicacion.equals("") || Fecha2.equals("")) {
             JOptionPane.showMessageDialog(this, "DEBE LLENAR TODOS LOS CAMPOS..!", "ADVERTENCIA..!", JOptionPane.ERROR_MESSAGE);
         } else {
             String valores = "'"+Codigo+"','"+Equipo+"','"+Fecha1+"','"+Observa+"','"+Ubicacion+"','"+Fecha2+"'";
@@ -122,10 +136,20 @@ public class Mantenimiento extends javax.swing.JFrame {
         }
     }
     
-    public void Traer_Equipo(){
-        TraerCodigo = CodigoE.getText();
-        conex.setQuery("select * from equipos where codigo = " + TraerCodigo);
-        Mantenimiento man = conex.getMantenimiento();
+    public void Equipo_Entrada(){
+        String TraerCodigoEntrada = CodigoE.getText();
+        conex.setQuery("select * from equipos where CODIGO = '"+TraerCodigoEntrada+"'");
+        Equipos equi = conex.getEquipos1();
+        EquipoE.setText(equi.getTipo());
+        Fecha1_E.setText(equi.getFecha());
+    }
+    
+    public void Equipo_Salida(){
+        String TraerCodigoSalida = CodigoS.getText();
+        conex.setQuery("select * from averiados where CODIGO = '"+TraerCodigoSalida+"'");
+        Equipos2 equi2 = conex.getEquipos2();
+        EquipoS.setText(equi2.getEquipo());
+        Fecha2_S.setText(equi2.getFecha2());
     }
     
     @SuppressWarnings("unchecked")
@@ -150,9 +174,9 @@ public class Mantenimiento extends javax.swing.JFrame {
         jLabel18 = new javax.swing.JLabel();
         EquipoE = new javax.swing.JTextField();
         Buscar1 = new javax.swing.JLabel();
-        jLabel30 = new javax.swing.JLabel();
-        jLabel29 = new javax.swing.JLabel();
-        jLabel31 = new javax.swing.JLabel();
+        btn_Guardar1 = new javax.swing.JLabel();
+        btn_Habilitar1 = new javax.swing.JLabel();
+        btn_Limpiar1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         FallaE = new javax.swing.JTextArea();
         jPanel3 = new javax.swing.JPanel();
@@ -169,9 +193,9 @@ public class Mantenimiento extends javax.swing.JFrame {
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         Fecha1_S = new javax.swing.JFormattedTextField();
-        jLabel32 = new javax.swing.JLabel();
-        jLabel33 = new javax.swing.JLabel();
-        jLabel34 = new javax.swing.JLabel();
+        btn_Habilitar2 = new javax.swing.JLabel();
+        btn_Guardar2 = new javax.swing.JLabel();
+        btn_Limpiar2 = new javax.swing.JLabel();
         UbicacionS = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -279,24 +303,24 @@ public class Mantenimiento extends javax.swing.JFrame {
             }
         });
 
-        jLabel30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes.20x20/Floppy.png"))); // NOI18N
-        jLabel30.addMouseListener(new java.awt.event.MouseAdapter() {
+        btn_Guardar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes.20x20/Floppy.png"))); // NOI18N
+        btn_Guardar1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel30MouseClicked(evt);
+                btn_Guardar1MouseClicked(evt);
             }
         });
 
-        jLabel29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes.20x20/Add.png"))); // NOI18N
-        jLabel29.addMouseListener(new java.awt.event.MouseAdapter() {
+        btn_Habilitar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes.20x20/Add.png"))); // NOI18N
+        btn_Habilitar1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel29MouseClicked(evt);
+                btn_Habilitar1MouseClicked(evt);
             }
         });
 
-        jLabel31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes.20x20/Refresh.png"))); // NOI18N
-        jLabel31.addMouseListener(new java.awt.event.MouseAdapter() {
+        btn_Limpiar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes.20x20/Refresh.png"))); // NOI18N
+        btn_Limpiar1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel31MouseClicked(evt);
+                btn_Limpiar1MouseClicked(evt);
             }
         });
 
@@ -338,11 +362,11 @@ public class Mantenimiento extends javax.swing.JFrame {
                 .addGap(13, 13, 13))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel29)
+                .addComponent(btn_Habilitar1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel30)
+                .addComponent(btn_Guardar1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel31)
+                .addComponent(btn_Limpiar1)
                 .addGap(131, 131, 131))
         );
         jPanel1Layout.setVerticalGroup(
@@ -379,9 +403,9 @@ public class Mantenimiento extends javax.swing.JFrame {
                     .addComponent(jLabel15))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel29)
-                    .addComponent(jLabel30)
-                    .addComponent(jLabel31))
+                    .addComponent(btn_Habilitar1)
+                    .addComponent(btn_Guardar1)
+                    .addComponent(btn_Limpiar1))
                 .addContainerGap())
         );
 
@@ -457,24 +481,24 @@ public class Mantenimiento extends javax.swing.JFrame {
         }
         Fecha1_S.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
-        jLabel32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes.20x20/Add.png"))); // NOI18N
-        jLabel32.addMouseListener(new java.awt.event.MouseAdapter() {
+        btn_Habilitar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes.20x20/Add.png"))); // NOI18N
+        btn_Habilitar2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel32MouseClicked(evt);
+                btn_Habilitar2MouseClicked(evt);
             }
         });
 
-        jLabel33.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes.20x20/Floppy.png"))); // NOI18N
-        jLabel33.addMouseListener(new java.awt.event.MouseAdapter() {
+        btn_Guardar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes.20x20/Floppy.png"))); // NOI18N
+        btn_Guardar2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel33MouseClicked(evt);
+                btn_Guardar2MouseClicked(evt);
             }
         });
 
-        jLabel34.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes.20x20/Refresh.png"))); // NOI18N
-        jLabel34.addMouseListener(new java.awt.event.MouseAdapter() {
+        btn_Limpiar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes.20x20/Refresh.png"))); // NOI18N
+        btn_Limpiar2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel34MouseClicked(evt);
+                btn_Limpiar2MouseClicked(evt);
             }
         });
 
@@ -513,11 +537,11 @@ public class Mantenimiento extends javax.swing.JFrame {
                             .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(133, 133, 133)
-                        .addComponent(jLabel32)
+                        .addComponent(btn_Habilitar2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel33)
+                        .addComponent(btn_Guardar2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel34)))
+                        .addComponent(btn_Limpiar2)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -554,9 +578,9 @@ public class Mantenimiento extends javax.swing.JFrame {
                     .addComponent(jLabel23))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel32)
-                    .addComponent(jLabel33)
-                    .addComponent(jLabel34))
+                    .addComponent(btn_Habilitar2)
+                    .addComponent(btn_Guardar2)
+                    .addComponent(btn_Limpiar2))
                 .addContainerGap())
         );
 
@@ -614,16 +638,16 @@ public class Mantenimiento extends javax.swing.JFrame {
     }//GEN-LAST:event_Fecha1_EActionPerformed
 
     private void Buscar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Buscar1MouseClicked
-        Traer_Equipo();
+        Equipo_Entrada();
     }//GEN-LAST:event_Buscar1MouseClicked
 
-    private void jLabel29MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel29MouseClicked
+    private void btn_Habilitar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_Habilitar1MouseClicked
         Habilitar_Entrada();
-    }//GEN-LAST:event_jLabel29MouseClicked
+    }//GEN-LAST:event_btn_Habilitar1MouseClicked
 
-    private void jLabel31MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel31MouseClicked
+    private void btn_Limpiar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_Limpiar1MouseClicked
         Limpiar_Entrada();
-    }//GEN-LAST:event_jLabel31MouseClicked
+    }//GEN-LAST:event_btn_Limpiar1MouseClicked
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
         Principal obj = new Principal();
@@ -632,28 +656,28 @@ public class Mantenimiento extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel5MouseClicked
 
     private void Buscar2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Buscar2MouseClicked
-        // TODO add your handling code here:
+        Equipo_Salida();
     }//GEN-LAST:event_Buscar2MouseClicked
 
     private void Fecha2_SActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Fecha2_SActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Fecha2_SActionPerformed
 
-    private void jLabel32MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel32MouseClicked
+    private void btn_Habilitar2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_Habilitar2MouseClicked
         Habilitar_Salida();
-    }//GEN-LAST:event_jLabel32MouseClicked
+    }//GEN-LAST:event_btn_Habilitar2MouseClicked
 
-    private void jLabel34MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel34MouseClicked
+    private void btn_Limpiar2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_Limpiar2MouseClicked
         Limpiar_Salida();
-    }//GEN-LAST:event_jLabel34MouseClicked
+    }//GEN-LAST:event_btn_Limpiar2MouseClicked
 
-    private void jLabel30MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel30MouseClicked
+    private void btn_Guardar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_Guardar1MouseClicked
         Guardar_Entrada();
-    }//GEN-LAST:event_jLabel30MouseClicked
+    }//GEN-LAST:event_btn_Guardar1MouseClicked
 
-    private void jLabel33MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel33MouseClicked
+    private void btn_Guardar2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_Guardar2MouseClicked
         Guardar_Salida();
-    }//GEN-LAST:event_jLabel33MouseClicked
+    }//GEN-LAST:event_btn_Guardar2MouseClicked
 
     /**
      * @param args the command line arguments
@@ -705,6 +729,12 @@ public class Mantenimiento extends javax.swing.JFrame {
     private javax.swing.JTextArea Observaciones;
     private javax.swing.JComboBox UbicacionE;
     private javax.swing.JTextField UbicacionS;
+    private javax.swing.JLabel btn_Guardar1;
+    private javax.swing.JLabel btn_Guardar2;
+    private javax.swing.JLabel btn_Habilitar1;
+    private javax.swing.JLabel btn_Habilitar2;
+    private javax.swing.JLabel btn_Limpiar1;
+    private javax.swing.JLabel btn_Limpiar2;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
@@ -717,12 +747,6 @@ public class Mantenimiento extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel29;
-    private javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabel31;
-    private javax.swing.JLabel jLabel32;
-    private javax.swing.JLabel jLabel33;
-    private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -733,4 +757,8 @@ public class Mantenimiento extends javax.swing.JFrame {
     private org.edisoncor.gui.panel.Panel panel1;
     private org.edisoncor.gui.panel.Panel panel2;
     // End of variables declaration//GEN-END:variables
+
+    void setTipo(String string) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
