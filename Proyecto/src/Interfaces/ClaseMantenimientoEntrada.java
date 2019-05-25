@@ -5,14 +5,14 @@ package Interfaces;
  * @author KELVIN
  */
 
-public class Equipos {
+public class ClaseMantenimientoEntrada {
     private String tipo, fecha1;
     
-    public Equipos(){
+    public ClaseMantenimientoEntrada(){
         
     }
     
-    public Equipos(String tipo, String fecha1){
+    public ClaseMantenimientoEntrada(String tipo, String fecha1){
         this.tipo = tipo;
         this.fecha1 = fecha1;
     }

@@ -139,7 +139,7 @@ public class Mantenimiento extends javax.swing.JFrame {
     public void Equipo_Entrada(){
         String TraerCodigoEntrada = CodigoE.getText();
         conex.setQuery("select * from equipos where CODIGO = '"+TraerCodigoEntrada+"'");
-        Equipos equi = conex.getEquipos1();
+        ClaseMantenimientoEntrada equi = conex.getEquipos1();
         EquipoE.setText(equi.getTipo());
         Fecha1_E.setText(equi.getFecha());
     }
@@ -147,7 +147,7 @@ public class Mantenimiento extends javax.swing.JFrame {
     public void Equipo_Salida(){
         String TraerCodigoSalida = CodigoS.getText();
         conex.setQuery("select * from averiados where CODIGO = '"+TraerCodigoSalida+"'");
-        Equipos2 equi2 = conex.getEquipos2();
+        ClaseMantenimientoSalida equi2 = conex.getEquipos2();
         EquipoS.setText(equi2.getEquipo());
         Fecha2_S.setText(equi2.getFecha2());
     }
