@@ -66,7 +66,7 @@ public class Conex {
         try {
             resul = sentencia.executeQuery(query);
             if(resul.next()){
-                traEx = new ClaseTrasladosExternos(resul.getString("TIPO"), resul.getString("EQUIPO"));
+                traEx = new ClaseTrasladosExternos(resul.getString("TIPO"), resul.getString("FECHA1"));
             }
         } catch (SQLException ex) {
             Logger.getLogger(Conex.class.getName()).log(Level.SEVERE, null, ex);
@@ -79,7 +79,7 @@ public class Conex {
         try {
             resul = sentencia.executeQuery(query);
             if(resul.next()){
-                traIn = new ClaseTrasladosInternos(resul.getString("TIPO"), resul.getString("EQUIPO"));
+                traIn = new ClaseTrasladosInternos(resul.getString("TIPO"), resul.getString("FECHA1"));
             }
         } catch (SQLException ex) {
             Logger.getLogger(Conex.class.getName()).log(Level.SEVERE, null, ex);

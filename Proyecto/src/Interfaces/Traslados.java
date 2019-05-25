@@ -147,7 +147,7 @@ public class Traslados extends javax.swing.JFrame {
     }
     
     public void Equipo_Interno(){
-        String TraerCodigoInterno = Codigo_Externos.getText();
+        String TraerCodigoInterno = Codigo_Internos.getText();
         conex.setQuery("select * from equipos where CODIGO = '"+TraerCodigoInterno+"'");
         ClaseTrasladosInternos traIn = conex.getClaseTrasladosInternos();
         Equipo_Internos.setText(traIn.getTipo());
