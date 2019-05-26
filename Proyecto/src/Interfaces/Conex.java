@@ -61,30 +61,17 @@ public class Conex {
         return equi2;
     }
     
-    public ClaseTrasladosExternos getClaseTrasladosExternos(){
-        ClaseTrasladosExternos traEx = null;
+    public ClaseTraslados getClaseTraslados(){
+        ClaseTraslados traEx = null;
         try {
             resul = sentencia.executeQuery(query);
             if(resul.next()){
-                traEx = new ClaseTrasladosExternos(resul.getString("TIPO"), resul.getString("FECHA1"));
+                traEx = new ClaseTraslados(resul.getString("TIPO"), resul.getString("FECHA1"));
             }
         } catch (SQLException ex) {
             Logger.getLogger(Conex.class.getName()).log(Level.SEVERE, null, ex);
         }
         return traEx;
-    }
-    
-    public ClaseTrasladosInternos getClaseTrasladosInternos(){
-        ClaseTrasladosInternos traIn = null;
-        try {
-            resul = sentencia.executeQuery(query);
-            if(resul.next()){
-                traIn = new ClaseTrasladosInternos(resul.getString("TIPO"), resul.getString("FECHA1"));
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(Conex.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return traIn;
     }
 
     public String getQuery() {

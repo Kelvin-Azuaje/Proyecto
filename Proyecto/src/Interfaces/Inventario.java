@@ -229,7 +229,7 @@ public class Inventario extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-        setTitle("INVENTARIO DE EQUIPOS");
+        setTitle("INVENTARIO GENERAL DE LOS EQUIPOS");
         setResizable(false);
 
         panel1.setColorPrimario(new java.awt.Color(255, 255, 255));

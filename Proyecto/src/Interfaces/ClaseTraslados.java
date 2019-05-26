@@ -5,13 +5,13 @@ package Interfaces;
  *
  * @author KELVIN
  */
-public class ClaseTrasladosExternos {
+public class ClaseTraslados {
     private String tipo, fecha1;
 
-    public ClaseTrasladosExternos() {
+    public ClaseTraslados() {
     }
 
-    public ClaseTrasladosExternos(String tipo, String fecha1) {
+    public ClaseTraslados(String tipo, String fecha1) {
         this.tipo = tipo;
         this.fecha1 = fecha1;
     }

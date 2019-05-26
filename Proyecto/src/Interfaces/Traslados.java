@@ -40,6 +40,7 @@ public class Traslados extends javax.swing.JFrame {
         Nuevo2.setEnabled(false);
         Guardar2.setEnabled(true);
         Limpiar2.setEnabled(true);
+        Deshabilitar();
     }
     
     public void Habilitar_Externos(){
@@ -54,6 +55,7 @@ public class Traslados extends javax.swing.JFrame {
         Nuevo1.setEnabled(false);
         Guardar1.setEnabled(true);
         Limpiar1.setEnabled(true);
+        Deshabilitar2();
     }
     
     public void Guardar_Externos(){
@@ -138,21 +140,14 @@ public class Traslados extends javax.swing.JFrame {
         Limpiar2.setEnabled(false);
     }
     
-    public void Equipo_Externo(){
+    public void Datos_Traslados(){
         String TraerCodigoExterno = Codigo_Externos.getText();
         conex.setQuery("select * from equipos where CODIGO = '"+TraerCodigoExterno+"'");
-        ClaseTrasladosExternos traEx = conex.getClaseTrasladosExternos();
+        ClaseTraslados traEx = conex.getClaseTraslados();
         Equipo_Externos.setText(traEx.getTipo());
         Fecha1_Externos.setText(traEx.getFecha1());
     }
     
-    public void Equipo_Interno(){
-        String TraerCodigoInterno = Codigo_Internos.getText();
-        conex.setQuery("select * from equipos where CODIGO = '"+TraerCodigoInterno+"'");
-        ClaseTrasladosInternos traIn = conex.getClaseTrasladosInternos();
-        Equipo_Internos.setText(traIn.getTipo());
-        Fecha1_Internos.setText(traIn.getFecha1());
-    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -200,7 +195,7 @@ public class Traslados extends javax.swing.JFrame {
         Limpiar2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-        setTitle("TRASLADOS");
+        setTitle("TRASLADOS DE EQUIPOS\n");
         setResizable(false);
 
         panel1.setColorPrimario(new java.awt.Color(255, 255, 255));
@@ -689,7 +684,7 @@ public class Traslados extends javax.swing.JFrame {
     }//GEN-LAST:event_Fecha1_ExternosActionPerformed
 
     private void Buscar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Buscar1MouseClicked
-        Equipo_Externo();
+        Datos_Traslados();
     }//GEN-LAST:event_Buscar1MouseClicked
 
     private void Destino_InternosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Destino_InternosActionPerformed
@@ -697,7 +692,7 @@ public class Traslados extends javax.swing.JFrame {
     }//GEN-LAST:event_Destino_InternosActionPerformed
 
     private void Buscar2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Buscar2MouseClicked
-        Equipo_Interno();
+        Datos_Traslados();
     }//GEN-LAST:event_Buscar2MouseClicked
 
     private void Fecha1_InternosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Fecha1_InternosActionPerformed

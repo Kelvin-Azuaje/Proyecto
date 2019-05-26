@@ -37,6 +37,7 @@ public class Registro extends javax.swing.JFrame {
         txt_Tipo.setSelectedIndex(0);
         txt_Descripcion.setText("");
         txt_Destino.setSelectedIndex(0);
+        txt_Fecha.setText("");
     }
     
     public void Guardar(){
@@ -78,7 +79,7 @@ public class Registro extends javax.swing.JFrame {
         txt_Fecha = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-        setTitle("REGISTRO DE EQUIPOS");
+        setTitle("REGISTRO DE EQUIPOS NUEVOS");
         setResizable(false);
 
         panel1.setColorPrimario(new java.awt.Color(255, 255, 255));

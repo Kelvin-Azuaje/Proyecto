@@ -83,8 +83,8 @@ public class Login extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("LOGIN");
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setTitle("LOGIN DE ACCESO AL SISTEMA");
         setResizable(false);
 
         panel1.setColorPrimario(new java.awt.Color(255, 255, 255));

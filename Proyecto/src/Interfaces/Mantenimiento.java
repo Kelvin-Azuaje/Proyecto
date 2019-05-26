@@ -199,7 +199,7 @@ public class Mantenimiento extends javax.swing.JFrame {
         UbicacionS = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("MANTENIMIENTO");
+        setTitle("MANTENIMIENTO DE EQUIPOS");
         setResizable(false);
 
         panel1.setColorPrimario(new java.awt.Color(255, 255, 255));
